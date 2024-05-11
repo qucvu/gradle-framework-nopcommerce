@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+}
+
+group 'com.automationtest'
+version '1.0-SNAPSHOT'
+compileJava.options.encoding('UTF-8')
+compileTestJava.options.encoding('UTF-8')
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    agent {
+        canBeResolved = true
+        canBeConsumed = true
+    }
+}
+dependencies {
+    implementation 'org.jetbrains:annotations:20.1.0'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.18.1'
+    implementation 'org.testng:testng:7.1.0'
+    testImplementation group: 'org.testng', name: 'testng', version: '7.9.0'
+    implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.7.0'
+    implementation group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
+    implementation group: 'io.qameta.allure', name: 'allure-testng', version: '2.25.0'
+    implementation group: 'org.aeonbits.owner', name: 'owner', version: '1.0.12'
+    agent "org.aspectj:aspectjweaver:1.9.22"
+}
+
+test {
+    jvmArgs = ["-javaagent:${configurations.agent.singleFile}"]
+    useTestNG() {
+        useDefaultListeners = true
+        suites 'src/test/resources/RunNopCommerceUser.xml'
+    }
+    systemProperty("file.encoding", "utf-8")
+    systemProperty("env", System.getProperty("envGradle"))
+}
