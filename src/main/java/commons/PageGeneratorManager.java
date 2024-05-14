@@ -40,4 +40,10 @@ public class PageGeneratorManager {
         return new UserSearchPageObject(driver);
     }
 
+
+    @Step("Initialize the User Product Category Page")
+    public static UserProductCategoryPageObject getUserProductCategoryPage(WebDriver driver) {
+        return new UserProductCategoryPageObject(driver);
+    }
+
 }

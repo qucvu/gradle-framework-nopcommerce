@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Selenium Cloud testing">
+    <parameter name="osName" value="windows"/>
+    <test name="Run on Chrome">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="osName" value="Windows"/>
+        <parameter name="osVersion" value="10"/>
+        <parameter name="browserVersion" value="latest"/>
+        <classes>
+            <class name="com.nopcommerce.user.User_01_Register_Cloud"/>
+        </classes>
+    </test>
+
+    <!--    <test name="Run on Edge">-->
+    <!--        <parameter name="browser" value="Edge"/>-->
+    <!--        <parameter name="osName" value="OS X"/>-->
+    <!--        <parameter name="osVersion" value="Sonoma"/>-->
+    <!--        <parameter name="browserVersion" value="latest"/>-->
+    <!--        <classes>-->
+    <!--            <class name="com.nopcommerce.user.User_01_Register_Cloud"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+
+</suite>

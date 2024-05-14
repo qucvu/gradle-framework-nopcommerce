@@ -622,6 +622,25 @@ public class BasePage {
         return sortList.equals(dataList);
     }
 
+    public boolean isDataFloatSortAscLamDa(String locatorType) {
+        List<WebElement> elementList = getListElements(locatorType);
+        List<String> dataList = elementList.stream().map(WebElement::getText).toList();
+        List<String> sortList = new ArrayList<String>(dataList);
+        Collections.sort(sortList);
+        return sortList.equals(dataList);
+    }
+
+    public boolean isDataFloatSortDescLamDa(String locatorType) {
+        List<WebElement> elementList = getListElements(locatorType);
+        List<Float> dataList = elementList.stream().map(webElement -> Float.parseFloat(webElement.getText())).toList();
+        List<Float> sortList = new ArrayList<Float
+                >(dataList);
+        Collections.sort(sortList);
+        Collections.reverse(sortList);
+        return sortList.equals(dataList);
+    }
+
+
     /**
      * This method input the specific value to the textbox by id
      *
@@ -764,8 +783,8 @@ public class BasePage {
 
     @Step("Click to {textValue} link ")
     public UserSearchPageObject clickToDynamicLinkAtFooterByText(String textValue) {
-        waitForElementClickable(NopCommerceBasePageUI.DYNAMIC_LINK_BY_TEXT_USER_FOOTER, textValue);
-        clickToElement(NopCommerceBasePageUI.DYNAMIC_LINK_BY_TEXT_USER_FOOTER, textValue);
+        waitForElementClickable(NopCommerceBasePageUI.DYNAMIC_FOOTER_LINK_BY_TEXT_USER, textValue);
+        clickToElement(NopCommerceBasePageUI.DYNAMIC_FOOTER_LINK_BY_TEXT_USER, textValue);
         return PageGeneratorManager.getUserSearchPage(driver);
     }
 
@@ -786,4 +805,29 @@ public class BasePage {
         waitForElementClickable(NopCommerceBasePageUI.DYNAMIC_CHECKBOX_RADIO_BY_LABEL, label);
         unCheckToDefaultCheckbox(NopCommerceBasePageUI.DYNAMIC_CHECKBOX_RADIO_BY_LABEL, label);
     }
+
+    @Step("Hover to {linkText} header link")
+    public void hoverDynamicHeaderLinkByText(String linkText) {
+        waitForElementVisibility(NopCommerceBasePageUI.DYNAMIC_HEADER_LINK_BY_TEXT_USER, linkText);
+        hoverMouseToElement(NopCommerceBasePageUI.DYNAMIC_HEADER_LINK_BY_TEXT_USER, linkText);
+    }
+
+    @Step("Click to {linkText} header link")
+    public void clickDynamicHeaderMenuLinkByText(String linkText) {
+        waitForElementClickable(NopCommerceBasePageUI.DYNAMIC_HEADER_LINK_BY_TEXT_USER, linkText);
+        clickToElement(NopCommerceBasePageUI.DYNAMIC_HEADER_LINK_BY_TEXT_USER, linkText);
+    }
+
+    @Step("Verify the {linkText} is active")
+    public boolean isActiveLinkDisplayedByText(String linkText) {
+        waitForElementVisibility(NopCommerceBasePageUI.DYNAMIC_ACTIVE_LINK_BY_TEXT, linkText);
+        return isElementDisplayed(NopCommerceBasePageUI.DYNAMIC_ACTIVE_LINK_BY_TEXT, linkText);
+    }
+
+    @Step("Verify the quantity product item is less or equal {quantity}")
+    public boolean isQuantityProductDisplayedByQuantity(int quantity) {
+        waitForAllElementInVisibility(NopCommerceBasePageUI.PRODUCT_ITEM_QUANTITY);
+        return getElementsSize(NopCommerceBasePageUI.PRODUCT_ITEM_QUANTITY) <= quantity;
+    }
+
 }

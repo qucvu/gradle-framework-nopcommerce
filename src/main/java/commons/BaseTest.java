@@ -3,10 +3,7 @@ package commons;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Step;
 import org.aeonbits.owner.ConfigFactory;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Platform;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -26,6 +23,8 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 
@@ -101,13 +100,6 @@ public class BaseTest {
         return driver;
     }
 
-    protected void sleepInSecond(long second) {
-        try {
-            Thread.sleep(second * 1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     protected WebDriver getBrowserDriver(String browserName, String appUrl, String osName, String portNumber) {
         AbstractDriverOptions options;
@@ -147,6 +139,84 @@ public class BaseTest {
 
         return driver;
     }
+
+    protected WebDriver getBrowserDriverBrowserStack(String browserName, String appUrl, String osName, String osVersion, String browserVersion) {
+
+        MutableCapabilities capabilities = new MutableCapabilities();
+        HashMap<String, Object> bstackOptions = new HashMap<String, Object>();
+        capabilities.setCapability("browserName", browserName);
+        bstackOptions.put("os", osName);
+        bstackOptions.put("osVersion", osVersion);
+        bstackOptions.put("browserVersion", browserVersion);
+        bstackOptions.put("consoleLogs", "info");
+        bstackOptions.put("projectName", "Login Nopcommerce");
+        bstackOptions.put("sessionName", String.format("Run on %s %s and browser %s %s ", osName, osVersion, browserName, browserVersion));
+        capabilities.setCapability("bstack:options", bstackOptions);
+        try {
+            driver = new RemoteWebDriver(new URL(GlobalConstants.BROWSER_STACK_URL), capabilities);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
+        driver.manage().window().maximize();
+        driver.get(appUrl);
+
+
+        return driver;
+    }
+
+
+    protected WebDriver getBrowserDriverSauceLab(String browserName, String appUrl, String osName, String osVersion, String browserVersion) {
+        ChromeOptions browserOptions = new ChromeOptions();
+        browserOptions.setPlatformName(String.format("%s %s", osName, osVersion));
+        browserOptions.setBrowserVersion(browserVersion);
+        Map<String, Object> sauceOptions = new HashMap<>();
+        sauceOptions.put("username", "oauth-nguyenquocvu696-ae4f1");
+        sauceOptions.put("accessKey", "c7dd4040-171c-46a8-820e-82a2ec2a40b7");
+//        sauceOptions.put("screenResolution", "1680x1050");
+        sauceOptions.put("build", "selenium-build-VHYQS");
+        sauceOptions.put("name", "Run on Chrome Nopcommerce");
+        browserOptions.setCapability("sauce:options", sauceOptions);
+        try {
+            driver = new RemoteWebDriver(new URL("https://ondemand.us-west-1.saucelabs.com:443/wd/hub"), browserOptions);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
+        driver.manage().window().maximize();
+        driver.get(appUrl);
+
+
+        return driver;
+    }
+
+
+    protected WebDriver getBrowserDriverLamDaTest(String browserName, String appUrl, String osName, String osVersion, String browserVersion) {
+        ChromeOptions browserOptions = new ChromeOptions();
+        browserOptions.setPlatformName(String.format("%s %s", osName, osVersion));
+        browserOptions.setBrowserVersion(browserVersion);
+        HashMap<String, Object> ltOptions = new HashMap<String, Object>();
+        ltOptions.put("username", "nguyenquocvu696");
+        ltOptions.put("accessKey", "r5X45Uagk4SwEW5XNMfznSci9GX5fmcWEIbAOSQuvn8J4XUBHr");
+        ltOptions.put("resolution", "1280x800");
+        ltOptions.put("project", "Gradle framework nopcommerce");
+        ltOptions.put("w3c", true);
+        browserOptions.setCapability("LT:Options", ltOptions);
+        try {
+            driver = new RemoteWebDriver(new URL("https://nguyenquocvu696:r5X45Uagk4SwEW5XNMfznSci9GX5fmcWEIbAOSQuvn8J4XUBHr@hub.lambdatest.com/wd/hub"), browserOptions);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
+        driver.get(appUrl);
+
+
+        return driver;
+    }
+
 
     protected int generateRandomNumber() {
         Random random = new Random(System.currentTimeMillis());
@@ -266,5 +336,14 @@ public class BaseTest {
     public String getYearFromDate(Date date) {
         return new SimpleDateFormat("yyyy").format(date);
     }
+
+    protected void sleepInSecond(long second) {
+        try {
+            Thread.sleep(second * 1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }
