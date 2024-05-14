@@ -1,8 +1,8 @@
 # Automation Web Testing Framework using Selenium Java
 **Site demo**
-  * User: https://demo.nopcommerce.com/
-  * Admin: https://admin-demo.nopcommerce.com/login?ReturnUrl=/admin/
-  
+  * User URL: https://demo.nopcommerce.com/
+  * Admin URL: https://admin-demo.nopcommerce.com/login?ReturnUrl=/admin/
+  * Checklist function: Register, Login, My Account Page, Search, Sort, Pagination
 ## Tech Stack
 Language: Java 17
 
@@ -19,7 +19,7 @@ Other libraries: webdriver-manager, javafaker, java owner ...
 - Run the parallel test case
 - Run multiple browsers/environments
 - Run Selenium Grid (remote)
-  
+- Run on cloud ((Browserstack, Saucelabs, Lamdatest)
 ## Authors
 - [@qucvu]
 
