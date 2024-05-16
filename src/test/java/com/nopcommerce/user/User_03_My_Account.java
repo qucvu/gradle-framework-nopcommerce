@@ -8,7 +8,10 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 import pageObjects.user.*;
 import utilities.DataHelper;
 
@@ -17,9 +20,9 @@ import java.util.Date;
 @Feature("User My account Page")
 public class User_03_My_Account extends BaseTest {
 
-    @Parameters({"browser", "runConfig", "osName", "hubPort"})
+    @Parameters({"browserName", "browserVersion"})
     @BeforeClass
-    public void beforeClass(String browserName, String runConfig, @Optional("windows") String osName, @Optional("4444") String port) {
+    public void beforeClass(String browserName, String browserVersion) {
         dataHelper = DataHelper.getDataHelper();
         firstName = dataHelper.getFirstName();
         lastName = dataHelper.getLastName();
@@ -39,11 +42,7 @@ public class User_03_My_Account extends BaseTest {
         reviewTitle = "Good";
         reviewContent = "Nice product";
         ratingLabel = "Not goods";
-        if (runConfig.equals("local")) {
-            driver = getBrowserDriver(browserName, environment.endUserUrl());
-        } else {
-            driver = getBrowserDriver(browserName, environment.endUserUrl(), osName, port);
-        }
+        driver = getBrowserDriver(browserName, browserVersion, environment.endUserUrl());
         Allure.step("Pre-condition: Login User successfully");
         homePage = PageGeneratorManager.getUserHomePage(driver);
         homePage.setCookies(Common_01_Login_User.loggedCookies);

@@ -16,12 +16,12 @@ import pageObjects.user.UserProductCategoryPageObject;
 @Feature("User sort/display/paging data")
 public class User_05_Sort_Display_Paging extends BaseTest {
 
-    @Parameters({"browser"})
+    @Parameters({"browserName", "browserVersion"})
     @BeforeClass
-    public void beforeClass(String browserName) {
+    public void beforeClass(String browserName, String browserVersion) {
         menu = "Computers";
         subMenu = "Notebooks";
-        driver = getBrowserDriver(browserName, environment.endUserUrl());
+        driver = getBrowserDriver(browserName, browserVersion, environment.endUserUrl());
         Allure.step("Pre-condition: Go to the sub menu of homepage");
         homePage = PageGeneratorManager.getUserHomePage(driver);
         homePage.hoverDynamicHeaderLinkByText(menu);

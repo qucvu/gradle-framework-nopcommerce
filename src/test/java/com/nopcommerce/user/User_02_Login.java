@@ -7,7 +7,10 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 import pageObjects.user.UserHomePageObject;
 import pageObjects.user.UserLoginPageObject;
 import pageObjects.user.UserRegisterPageObject;
@@ -17,9 +20,9 @@ import utilities.dataModel.UserLogin;
 @Feature("User Login")
 public class User_02_Login extends BaseTest {
 
-    @Parameters({"browser", "runConfig", "osName", "hubPort"})
+    @Parameters({"browserName", "browserVersion"})
     @BeforeClass
-    public void beforeClass(String browserName, String runConfig, @Optional("windows") String osName, @Optional("4444") String port) {
+    public void beforeClass(String browserName, String browserVersion) {
         dataHelper = DataHelper.getDataHelper();
         userLoginInfo = UserLogin.getUser();
         firstName = dataHelper.getFirstName();
@@ -30,11 +33,7 @@ public class User_02_Login extends BaseTest {
         invalidEmail = "automation@fc";
         userLoginInfo.setEmail(email);
         userLoginInfo.setPassword(password);
-        if (runConfig.equals("local")) {
-            driver = getBrowserDriver(browserName, environment.endUserUrl());
-        } else {
-            driver = getBrowserDriver(browserName, environment.endUserUrl(), osName, port);
-        }
+        driver = getBrowserDriver(browserName, browserVersion, environment.endUserUrl());
         Allure.step("Pre-condition: REGISTER success the email: " + email);
         homePage = PageGeneratorManager.getUserHomePage(driver);
         registerPage = homePage.clickToRegisterLink();

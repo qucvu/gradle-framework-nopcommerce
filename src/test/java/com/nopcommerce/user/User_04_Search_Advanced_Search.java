@@ -18,15 +18,15 @@ import utilities.DataHelper;
 @Feature("Search product data")
 public class User_04_Search_Advanced_Search extends BaseTest {
 
-    @Parameters({"browser"})
+    @Parameters({"browserName", "browserVersion"})
     @BeforeClass
-    public void beforeClass(String browserName) {
+    public void beforeClass(String browserName, String browserVersion) {
         dataHelper = DataHelper.getDataHelper();
         nonExistingProduct = dataHelper.getProductName();
         relativeData = "Leno";
         absoluteProduct = "ThinkPad X1 Carbon";
         advancedSearchProduct = "Apple Macbook Pro";
-        driver = getBrowserDriver(browserName, environment.endUserUrl());
+        driver = getBrowserDriver(browserName, browserVersion, environment.endUserUrl());
         Allure.step("Pre-condition: Login User successfully");
         homePage = PageGeneratorManager.getUserHomePage(driver);
         homePage.setCookies(Common_01_Login_User.loggedCookies);

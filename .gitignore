@@ -5,6 +5,7 @@ build/
 !**/src/test/**/build/
 reportHML
 allure-results
+browserstack.yml
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml
