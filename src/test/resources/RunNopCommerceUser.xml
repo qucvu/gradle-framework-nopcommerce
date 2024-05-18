@@ -13,7 +13,7 @@
         <parameter name="browserVersion" value="latest"/>
         <classes>
             <class name="com.nopcommerce.common.Common_01_Login_User"/>
-            <class name="com.nopcommerce.user.User_05_Sort_Display_Paging"/>
+            <class name="com.nopcommerce.user.User_06_WhistList_Compare"/>
         </classes>
     </test>
 

@@ -59,6 +59,7 @@ public class BasePage {
         return driver.getPageSource();
     }
 
+    @Step("Back to the previous page")
     public void backToPage() {
         driver.navigate().back();
     }
@@ -211,6 +212,11 @@ public class BasePage {
         } else {
             getWebElement(locatorType).click();
         }
+    }
+
+    protected void clickToElement(WebElement element) {
+        element.click();
+
     }
 
 
@@ -788,11 +794,17 @@ public class BasePage {
         return PageGeneratorManager.getUserSearchPage(driver);
     }
 
-    @Step("Verify the product item is displayed by {productTitle}")
+    @Step("Verify the product item of product `{productTitle}` is displayed")
     public boolean isProductItemResultDisplayedByProductTitle(String productTitle) {
         waitForElementVisibility(NopCommerceBasePageUI.DYNAMIC_PRODUCT_TITLE_BY_TITLE, productTitle);
         return isElementDisplayed(NopCommerceBasePageUI.DYNAMIC_PRODUCT_TITLE_BY_TITLE, productTitle);
     }
+
+    @Step("Verify the item of product `{productTitle}` is undisplayed")
+    public boolean isProductItemUndisplayedByProductTitle(String productTitle) {
+        return isElementUndisplayed(NopCommerceBasePageUI.DYNAMIC_PRODUCT_TITLE_BY_TITLE, productTitle);
+    }
+
 
     @Step("Check to {label} checkbox/radio")
     public void checkToDefaultCheckboxRadioByLabel(String label) {
@@ -828,6 +840,46 @@ public class BasePage {
     public boolean isQuantityProductDisplayedByQuantity(int quantity) {
         waitForAllElementInVisibility(NopCommerceBasePageUI.PRODUCT_ITEM_QUANTITY);
         return getElementsSize(NopCommerceBasePageUI.PRODUCT_ITEM_QUANTITY) <= quantity;
+    }
+
+    @Step("Click to `WhistList` link at header bar")
+    public UserProductWhistListPageObject clickToWhistListLink() {
+        waitForElementClickable(NopCommerceBasePageUI.WHIST_LIST_LINK);
+        clickToElementByJS(NopCommerceBasePageUI.WHIST_LIST_LINK);
+        return PageGeneratorManager.getUserProductWhistListPage(driver);
+    }
+
+    @Step("Click to `Shopping Cart` link")
+    public UserShoppingCartPageObject clickToShoppingCartLink() {
+        waitForElementClickable(NopCommerceBasePageUI.SHOPPING_CART_LINK);
+        clickToElementByJS(NopCommerceBasePageUI.SHOPPING_CART_LINK);
+        return PageGeneratorManager.getUserShoppingCartPage(driver);
+    }
+
+    @Step("Hover to `Shopping Cart` link")
+    public void hoverToHeaderShoppingCartLink() {
+        waitForElementVisibility(NopCommerceBasePageUI.SHOPPING_CART_LINK);
+        hoverMouseToElement(NopCommerceBasePageUI.SHOPPING_CART_LINK);
+    }
+
+    @Step("Go to user home page")
+    public UserHomePageObject goToUserHomePage() {
+        waitForElementClickable(NopCommerceBasePageUI.ICON_USER_HOME_PAGE);
+        clickToElement(NopCommerceBasePageUI.ICON_USER_HOME_PAGE);
+        return PageGeneratorManager.getUserHomePage(driver);
+    }
+
+    @Step("Click to `Add to Compare` button at {productTitle} item")
+    public void clickToAddToCompareButtonByProductTitle(String productTitle) {
+        scrollToElement(NopCommerceBasePageUI.ADD_TO_COMPARE_BUTTON_BY_PRODUCT_TITLE, productTitle);
+        waitForElementClickable(NopCommerceBasePageUI.ADD_TO_COMPARE_BUTTON_BY_PRODUCT_TITLE, productTitle);
+        clickToElement(NopCommerceBasePageUI.ADD_TO_COMPARE_BUTTON_BY_PRODUCT_TITLE, productTitle);
+    }
+
+    @Step("Get Price of product: `{productTitle}` at Product Item")
+    public String getProductPriceByProductTitleAtProductItem(String productTitle) {
+        waitForElementVisibility(NopCommerceBasePageUI.DYNAMIC_ACTUAL_PRODUCT_PRICE_BY_PRODUCT_TITLE, productTitle);
+        return getElementText(NopCommerceBasePageUI.DYNAMIC_ACTUAL_PRODUCT_PRICE_BY_PRODUCT_TITLE, productTitle);
     }
 
 }

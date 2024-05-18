@@ -53,4 +53,10 @@ public class UserProductDetailsPageObject extends BasePage {
         waitForElementVisibility(UserProductDetailsPageUI.REVIEW_CONTENT_TEXTAREA);
         sendKeyToElement(UserProductDetailsPageUI.REVIEW_CONTENT_TEXTAREA, reviewContent);
     }
+
+    @Step("Click to `Add to WhistList button`")
+    public void clickToAddToWhistListButtonAtProductOverview() {
+        waitForElementClickable(UserProductDetailsPageUI.ADD_TO_WHIST_LIST_BUTTON_AT_PRODUCT_OVERVIEW);
+        clickToElement(UserProductDetailsPageUI.ADD_TO_WHIST_LIST_BUTTON_AT_PRODUCT_OVERVIEW);
+    }
 }

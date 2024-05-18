@@ -38,7 +38,7 @@ public class Common_01_Login_User extends BaseTest {
     }
 
     private WebDriver driver;
-    private String firstName, lastName, email;
+    public static String firstName, lastName, email;
     public static String password;
 
     public static Set<Cookie> loggedCookies;

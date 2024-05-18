@@ -46,4 +46,26 @@ public class PageGeneratorManager {
         return new UserProductCategoryPageObject(driver);
     }
 
+    @Step("Initialize the User Product Whist List Page")
+    public static UserProductWhistListPageObject getUserProductWhistListPage(WebDriver driver) {
+        return new UserProductWhistListPageObject(driver);
+    }
+
+
+    @Step("Initialize the User Shopping Cart Page")
+    public static UserShoppingCartPageObject getUserShoppingCartPage(WebDriver driver) {
+        return new UserShoppingCartPageObject(driver);
+    }
+
+    @Step("Initialize the User Product Comparison Page ")
+    public static UserProductComparisonPageObject getUserProductComparisonPage(WebDriver driver) {
+        return new UserProductComparisonPageObject(driver);
+    }
+
+
+    @Step("Initialize the User Recent Product View  Page ")
+    public static UserProductViewRecentPageObject getUserProductViewRecentPage(WebDriver driver) {
+        return new UserProductViewRecentPageObject(driver);
+    }
+
 }

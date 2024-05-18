@@ -33,7 +33,6 @@ public class LocalFactory {
             case CHROME -> {
                 ChromeOptions options = new ChromeOptions();
                 options.setBrowserVersion(browserVersion);
-                System.out.println(options.toString());
                 driver = new ChromeDriver(options);
             }
 

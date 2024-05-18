@@ -9,7 +9,9 @@ public class NopCommerceBasePageUI {
     public final static String REGISTER_LINK = "css=a.ico-register";
     public final static String LOGOUT_LINK = "css=a.ico-logout";
     public final static String LOGIN_LINK = "css=a.ico-login";
+    public final static String WHIST_LIST_LINK = "css=a.ico-wishlist";
     public final static String MY_ACCOUNT_LINK = "CSS=a.ico-account";
+    public final static String SHOPPING_CART_LINK = "CSS=a.ico-cart";
     public final static String DYNAMIC_MESSAGE_UNDER_TEXTBOOX_BY_ID = "id=%s";
     public final static String DYNAMIC_DROPDOWN_BY_NAME = "css=select[name='%s']";
     public final static String MESSAGE_AT_HEADER_BAR_NOTIFICATION = "css=div.bar-notification>p";
@@ -20,4 +22,7 @@ public class NopCommerceBasePageUI {
     public final static String PRODUCT_TITLE_IN_PRODUCT_ITEM = "css=div.product-item h2.product-title>a";
     public final static String PRODUCT_PRICE_IN_PRODUCT_ITEM = "css=div.product-item div.prices>span.price";
     public final static String PRODUCT_ITEM_QUANTITY = "css=div.item-grid div.product-item";
+    public final static String ICON_USER_HOME_PAGE = "css=div.header-logo>a";
+    public final static String ADD_TO_COMPARE_BUTTON_BY_PRODUCT_TITLE = "xpath=//a[text()='%s']/parent::h2[contains(@class, 'product-title')]/following-sibling::div[contains(@class, 'add-info')]//button[@title='Add to compare list']";
+    public final static String DYNAMIC_ACTUAL_PRODUCT_PRICE_BY_PRODUCT_TITLE = "XPATH=//a[text()='%s']/parent::h2[contains(@class, 'product-title')]/following-sibling::div[contains(@class, 'add-info')]//span[contains(@class, 'actual-price')]";
 }

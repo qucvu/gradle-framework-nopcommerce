@@ -1,7 +1,11 @@
 package factoryRunConfig;
 
+import commons.BrowserList;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.AbstractDriverOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
@@ -24,9 +28,16 @@ public class LambdaTestFactory {
 
     public WebDriver createDriver() {
         WebDriver driver = null;
-        ChromeOptions browserOptions = new ChromeOptions();
-        browserOptions.setPlatformName(String.format("%s %s", osName, osVersion));
-        browserOptions.setBrowserVersion(browserVersion);
+        BrowserList browser = BrowserList.valueOf(browserName.toUpperCase());
+        AbstractDriverOptions options;
+        switch (browser) {
+            case CHROME -> options = new ChromeOptions();
+            case FIREFOX -> options = new FirefoxOptions();
+            case EDGE -> options = new EdgeOptions();
+            default -> throw new RuntimeException("The browser name is invalid");
+        }
+        options.setPlatformName(String.format("%s %s", osName, osVersion));
+        options.setBrowserVersion(browserVersion);
         HashMap<String, Object> ltOptions = new HashMap<String, Object>();
         ltOptions.put("username", "nguyenquocvu696");
         ltOptions.put("accessKey", "r5X45Uagk4SwEW5XNMfznSci9GX5fmcWEIbAOSQuvn8J4XUBHr");
@@ -34,9 +45,9 @@ public class LambdaTestFactory {
         ltOptions.put("resolution", "1280x800");
         ltOptions.put("project", "Gradle framework nopcommerce");
         ltOptions.put("w3c", true);
-        browserOptions.setCapability("LT:Options", ltOptions);
+        options.setCapability("LT:Options", ltOptions);
         try {
-            driver = new RemoteWebDriver(new URL("https://nguyenquocvu696:r5X45Uagk4SwEW5XNMfznSci9GX5fmcWEIbAOSQuvn8J4XUBHr@hub.lambdatest.com/wd/hub"), browserOptions);
+            driver = new RemoteWebDriver(new URL("https://nguyenquocvu696:r5X45Uagk4SwEW5XNMfznSci9GX5fmcWEIbAOSQuvn8J4XUBHr@hub.lambdatest.com/wd/hub"), options);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
