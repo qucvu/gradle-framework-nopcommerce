@@ -1,6 +1,6 @@
 package factoryRunConfig;
 
-import commons.BrowserList;
+import factoryBrowser.BrowserList;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;

@@ -24,16 +24,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-public class BasePage {
+public abstract class BasePage {
     private final int longTimeout = GlobalConstants.LONG_TIMEOUT;
     private final int shortTimeout = GlobalConstants.SHORT_TIMEOUT;
     WebDriver driver;
-
-
-    public static BasePage getBasePage(WebDriver driver) {
-        return new BasePage(driver);
-    }
-
+    
     public BasePage(WebDriver driver) {
         this.driver = driver;
     }

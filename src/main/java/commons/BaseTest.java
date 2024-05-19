@@ -19,7 +19,7 @@ import java.util.Date;
 import java.util.Random;
 
 
-public class BaseTest {
+public abstract class BaseTest {
     private WebDriver driver;
     protected static Environment environment;
     private static String runConfig;

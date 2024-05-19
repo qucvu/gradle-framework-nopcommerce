@@ -11,6 +11,7 @@ public class GlobalConstants {
     public final static int SHORT_TIMEOUT = 3;
     public final static String OPERA_LAUNCHER_EXE_LOCATION = Paths.get(USER_PROFILE, "AppData", "Local", "Programs", "Opera", "opera.exe").toString();
     public final static String UPLOAD_FILE_FOLDER = PROJECT_PATH + "/uploadFiles";
+    public final static String DOWNLOAD_FILE_FOLDER = PROJECT_PATH + "/downloadFiles";
     public final static String DATA_RECORD = PROJECT_PATH + "/dataRecord";
 
     public final static String BROWSER_USERNAME = "vnguynquc_Uz2DM7";
