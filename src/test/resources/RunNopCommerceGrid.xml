@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Run all testcases Nopcommerce - User" parallel="tests" thread-count="2">
-    <parameter name="runConfig" value="local"/>
+    <parameter name="runConfig" value="grid"/>
     <parameter name="osName" value="Windows"/>
     <parameter name="osVersion" value="10"/>
     <parameter name="hubPort" value="4444"/>
@@ -10,10 +10,18 @@
     </listeners>
     <test name="Run on Chrome" preserve-order="true">
         <parameter name="browserName" value="chrome"/>
-        <parameter name="browserVersion" value="124"/>
+        <parameter name="browserVersion" value="122"/>
         <classes>
-            <class name="com.nopcommerce.common.Common_01_Login_User"/>
-            <!--            <class name="com.nopcommerce.user.User_07_Order"/>-->
+            <class name="com.nopcommerce.user.User_02_Login"/>
+            <!--            <class name="com.nopcommerce.user.User_06_WhistList_Compare"/>-->
+        </classes>
+    </test>
+
+    <test name="Run on Edge">
+        <parameter name="browserName" value="edge"/>
+        <parameter name="browserVersion" value="122"/>
+        <classes>
+            <class name="com.nopcommerce.user.User_02_Login"/>
         </classes>
     </test>
 

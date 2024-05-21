@@ -32,6 +32,7 @@ public class GridFactory {
         } else {
             platform = Platform.MAC;
         }
+        platform = Platform.ANY;
 
         switch (browserName) {
             case "firefox" -> {

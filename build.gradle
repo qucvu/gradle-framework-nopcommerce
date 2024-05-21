@@ -34,7 +34,7 @@ test {
 
     useTestNG() {
         useDefaultListeners = true
-        suites 'src/test/resources/RunNopCommerceUser.xml'
+        suites 'src/test/resources/RunNopCommerceGrid.xml'
     }
     systemProperty("file.encoding", "utf-8")
     systemProperty("env", System.getProperty("envGradle"))
