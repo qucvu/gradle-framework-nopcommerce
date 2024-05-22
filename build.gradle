@@ -31,10 +31,10 @@ dependencies {
 
 test {
     jvmArgs = ["-javaagent:${configurations.agent.singleFile}",]
-
-    useTestNG() {
-        useDefaultListeners = true
-        suites 'src/test/resources/RunNopCommerceGrid.xml'
+    if (project.hasProperty('suiteFile')) {
+        useTestNG {
+            suites project.property('suiteFile')
+        }
     }
     systemProperty("file.encoding", "utf-8")
     systemProperty("env", System.getProperty("envGradle"))

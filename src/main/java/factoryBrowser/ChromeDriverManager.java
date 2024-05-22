@@ -18,7 +18,7 @@ public class ChromeDriverManager implements BrowserFactory {
     public WebDriver getBrowserDriver() {
         ChromeOptions options = new ChromeOptions();
         options.setBrowserVersion(browserVersion);
-        options.addArguments("--incognito");
+//        options.addArguments("--incognito");
         options.addArguments("--disable-infobars");
         HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
         chromePrefs.put("profile.default_content_settings.popups", 0);

@@ -2,14 +2,21 @@ package utilities;
 
 import com.github.javafaker.Faker;
 
+import java.nio.ByteBuffer;
+import java.util.Base64;
 import java.util.Date;
 import java.util.Locale;
+import java.util.UUID;
 
 public class DataHelper {
-    Faker faker = new Faker(Locale.US);
+    private static DataHelper dataHelper;
+    private final Faker faker = new Faker(Locale.US);
 
-    public static DataHelper getDataHelper() {
-        return new DataHelper();
+    private DataHelper() {
+    }
+
+    public static synchronized DataHelper getDataHelper() {
+        return dataHelper == null ? new DataHelper() : dataHelper;
     }
 
     public String getFirstName() {
@@ -21,7 +28,7 @@ public class DataHelper {
     }
 
     public String getUserEmail() {
-        return faker.internet().emailAddress();
+        return generateUniqueUUID() + faker.internet().emailAddress();
     }
 
     public String getPassword() {
@@ -72,5 +79,12 @@ public class DataHelper {
         return "0" + faker.phoneNumber().phoneNumber().substring(1);
     }
 
+    private String generateUniqueUUID() {
+        UUID uuid = UUID.randomUUID();
+        ByteBuffer byteBuffer = ByteBuffer.wrap(new byte[16]);
+        byteBuffer.putLong(uuid.getMostSignificantBits());
+        byteBuffer.putLong(uuid.getLeastSignificantBits());
+        return Base64.getUrlEncoder().withoutPadding().encodeToString(byteBuffer.array()).substring(0, 10);
+    }
 
 }

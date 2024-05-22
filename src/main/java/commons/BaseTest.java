@@ -20,6 +20,8 @@ import java.util.Random;
 
 
 public abstract class BaseTest {
+
+    //    private ThreadLocal<WebDriver> threadDriver = new ThreadLocal<WebDriver>();
     private WebDriver driver;
     protected static Environment environment;
     private static String runConfig;
@@ -37,11 +39,11 @@ public abstract class BaseTest {
     public void beforeSuite(String runConfig, String osName, String osVersion, String hubPort) {
         String environmentName = System.getProperty("env");
         ConfigFactory.setProperty("env", environmentName);
+        BaseTest.environment = ConfigFactory.create(Environment.class);
         BaseTest.runConfig = runConfig;
         BaseTest.osName = osName;
         BaseTest.osVersion = osVersion;
         BaseTest.portNumber = hubPort;
-        BaseTest.environment = ConfigFactory.create(Environment.class);
         deleteAllFileInFolder("allure-results");
     }
 

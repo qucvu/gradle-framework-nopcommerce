@@ -10,12 +10,21 @@
     </listeners>
     <test name="Run on Chrome" preserve-order="true">
         <parameter name="browserName" value="chrome"/>
-        <parameter name="browserVersion" value="124"/>
+        <parameter name="browserVersion" value="125"/>
         <classes>
-            <class name="com.nopcommerce.common.Common_01_Login_User"/>
-            <!--            <class name="com.nopcommerce.user.User_07_Order"/>-->
+            <!--            <class name="com.nopcommerce.common.Common_01_Login_User"/>-->
+            <class name="com.nopcommerce.user.User_01_Register"/>
         </classes>
     </test>
+
+    <!--    <test name="Run on Edge" preserve-order="true">-->
+    <!--        <parameter name="browserName" value="edge"/>-->
+    <!--        <parameter name="browserVersion" value="125"/>-->
+    <!--        <classes>-->
+    <!--            &lt;!&ndash;            <class name="com.nopcommerce.common.Common_01_Login_User"/>&ndash;&gt;-->
+    <!--            <class name="com.nopcommerce.user.User_02_Login"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
 
 </suite>
