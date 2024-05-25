@@ -69,8 +69,8 @@ public class User_03_My_Account extends BaseTest {
         verifyEquals(customerInfoPage.getValueTextboxById("Last name", "LastName"), lastName);
         verifyEquals(customerInfoPage.getValueTextboxById("Email", "Email"), email);
         verifyEquals(customerInfoPage.getItemValueDefaultDropdownByName("Day", "DateOfBirthDay"), getDayFromDate(dob));
-        verifyEquals(customerInfoPage.getItemValueDefaultDropdownByName("Month", "DateOfBirthMonth"), getDayFromDate(dob));
-        verifyEquals(customerInfoPage.getItemValueDefaultDropdownByName("Year", "DateOfBirthYear"), getDayFromDate(dob));
+        verifyEquals(customerInfoPage.getItemValueDefaultDropdownByName("Month", "DateOfBirthMonth"), getMonthFromDate(dob));
+        verifyEquals(customerInfoPage.getItemValueDefaultDropdownByName("Year", "DateOfBirthYear"), getYearFromDate(dob));
         verifyEquals(customerInfoPage.getValueTextboxById("Company name", "Company"), companyName);
 
     }

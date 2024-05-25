@@ -7,6 +7,7 @@
     <parameter name="hubPort" value="4444"/>
     <listeners>
         <listener class-name="reportConfigs.AllureTestListener"/>
+        <listener class-name="commons.MethodListener"/>
     </listeners>
     <test name="Run on Chrome" preserve-order="true">
         <parameter name="browserName" value="chrome"/>

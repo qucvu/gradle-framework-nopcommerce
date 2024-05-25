@@ -95,7 +95,7 @@ public class User_04_Search_Advanced_Search extends BaseTest {
         searchPage.checkToDefaultCheckboxRadioByLabel("Automatically search sub categories");
         searchPage.clickToSearchButton();
         verifyEquals(searchPage.getQuantityProductItemAtSearchPage(), 1);
-        verifyEquals(searchPage.getMessageSearchProductResult(), "Apple MacBook Pro 13-inch");
+        verifyTrue(searchPage.isProductItemResultDisplayedByProductTitle("Apple MacBook Pro 13-inch"));
     }
 
     @Test

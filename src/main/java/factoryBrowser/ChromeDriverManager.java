@@ -19,7 +19,7 @@ public class ChromeDriverManager implements BrowserFactory {
         ChromeOptions options = new ChromeOptions();
         options.setBrowserVersion(browserVersion);
 //        options.addArguments("--incognito");
-        options.addArguments("--disable-infobars");
+//        options.addArguments("--disable-infobars");
         HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
         chromePrefs.put("profile.default_content_settings.popups", 0);
         chromePrefs.put("download.default_directory", GlobalConstants.DOWNLOAD_FILE_FOLDER);

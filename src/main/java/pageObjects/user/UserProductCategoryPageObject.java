@@ -19,18 +19,21 @@ public class UserProductCategoryPageObject extends BasePage {
 
     @Step("Verify the product name is sorted from A to Z")
     public boolean isProductNameSortAsc() {
+        waitForElementInvisibility(NopCommerceBasePageUI.AJAX_LOADING_PRODUCT_LIST);
         waitForAllElementVisibility(NopCommerceBasePageUI.PRODUCT_TITLE_IN_PRODUCT_ITEM);
         return isDataStringSortAscLamDa(NopCommerceBasePageUI.PRODUCT_TITLE_IN_PRODUCT_ITEM);
     }
 
     @Step("Verify the product name is sorted from Z to A")
     public boolean isProductNameSortDesc() {
+        waitForElementInvisibility(NopCommerceBasePageUI.AJAX_LOADING_PRODUCT_LIST);
         waitForAllElementVisibility(NopCommerceBasePageUI.PRODUCT_TITLE_IN_PRODUCT_ITEM);
         return isDataStringSortDescLamDa(NopCommerceBasePageUI.PRODUCT_TITLE_IN_PRODUCT_ITEM);
     }
 
     @Step("Verify the product price is sorted from high to low")
     public boolean isProductPriceSortDesc() {
+        waitForElementInvisibility(NopCommerceBasePageUI.AJAX_LOADING_PRODUCT_LIST);
         waitForAllElementVisibility(NopCommerceBasePageUI.PRODUCT_PRICE_IN_PRODUCT_ITEM);
         List<WebElement> productPriceElements = getListElements(NopCommerceBasePageUI.PRODUCT_PRICE_IN_PRODUCT_ITEM);
         List<Float> productPriceList = productPriceElements.stream().map(productPrice -> Float.parseFloat(productPrice.getText().substring(1).replace(".", "").replace(",", "."))).toList();
@@ -42,6 +45,7 @@ public class UserProductCategoryPageObject extends BasePage {
 
     @Step("Verify the product price is sorted from low to high")
     public boolean isProductPriceSortAsc() {
+        waitForElementInvisibility(NopCommerceBasePageUI.AJAX_LOADING_PRODUCT_LIST);
         waitForAllElementVisibility(NopCommerceBasePageUI.PRODUCT_PRICE_IN_PRODUCT_ITEM);
         List<WebElement> productPriceElements = getListElements(NopCommerceBasePageUI.PRODUCT_PRICE_IN_PRODUCT_ITEM);
         List<Float> productPriceList = productPriceElements.stream().map(productPrice -> Float.parseFloat(productPrice.getText().substring(1).replace(".", "").replace(",", "."))).toList();
@@ -52,6 +56,7 @@ public class UserProductCategoryPageObject extends BasePage {
 
     @Step("Get current active page")
     public int getCurrentActivePage() {
+        waitForElementInvisibility(NopCommerceBasePageUI.AJAX_LOADING_PRODUCT_LIST);
         waitForElementVisibility(UserProductCategoryPageUI.CURRENT_ACTIVE_PAGE);
         return Integer.parseInt(getElementText(UserProductCategoryPageUI.CURRENT_ACTIVE_PAGE));
     }
@@ -64,6 +69,7 @@ public class UserProductCategoryPageObject extends BasePage {
 
     @Step("Verify the previous icon Pagination is displayed")
     public boolean isPreviousIconPaginationDisplayed() {
+        waitForElementInvisibility(NopCommerceBasePageUI.AJAX_LOADING_PRODUCT_LIST);
         waitForElementVisibility(UserProductCategoryPageUI.PREVIOUS_ICON_PAGINATION);
         return isElementDisplayed(UserProductCategoryPageUI.PREVIOUS_ICON_PAGINATION);
     }
@@ -76,6 +82,7 @@ public class UserProductCategoryPageObject extends BasePage {
 
     @Step("Verify the pagination is not displayed")
     public boolean isPaginationProductUndisplayed() {
+        waitForElementInvisibility(NopCommerceBasePageUI.AJAX_LOADING_PRODUCT_LIST);
         return isElementUndisplayed(UserProductCategoryPageUI.CURRENT_ACTIVE_PAGE);
     }
 }

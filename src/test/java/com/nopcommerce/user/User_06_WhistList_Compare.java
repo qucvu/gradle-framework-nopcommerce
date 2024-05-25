@@ -61,7 +61,7 @@ public class User_06_WhistList_Compare extends BaseTest {
         productWhistListPage.clickToButtonByText("Add to cart");
         shoppingCartPage = PageGeneratorManager.getUserShoppingCartPage(driver);
         shoppingCartPage.hoverToHeaderShoppingCartLink();
-        verifyTrue(shoppingCartPage.isProductTitleDisplayedAtMiniShoppingCart(productTitle));
+        verifyTrue(shoppingCartPage.isProductTitleDisplayedAtMiniCart(productTitle));
         productWhistListPage = shoppingCartPage.clickToWhistListLink();
         verifyTrue(productWhistListPage.isProductTitleProductUndisplayed(productTitle));
 
@@ -112,7 +112,7 @@ public class User_06_WhistList_Compare extends BaseTest {
     @Description("Verify user can new recently products ")
     @Test
     public void WhistList_Compare_05_View_Recent_Product() {
-        productComparisonPage.hoverDynamicHeaderLinkByText("Computers");
+        productComparisonPage.hoverToDynamicHeaderLinkByText("Computers");
         productComparisonPage.clickDynamicHeaderMenuLinkByText("Notebooks");
         productCategoryPage = PageGeneratorManager.getUserProductCategoryPage(driver);
         productCategoryPage.clickToDynamicProductByTitle(productViewFirst);

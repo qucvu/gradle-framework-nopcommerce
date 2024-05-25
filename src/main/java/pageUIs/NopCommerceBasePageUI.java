@@ -25,4 +25,5 @@ public class NopCommerceBasePageUI {
     public final static String ICON_USER_HOME_PAGE = "css=div.header-logo>a";
     public final static String ADD_TO_COMPARE_BUTTON_BY_PRODUCT_TITLE = "xpath=//a[text()='%s']/parent::h2[contains(@class, 'product-title')]/following-sibling::div[contains(@class, 'add-info')]//button[@title='Add to compare list']";
     public final static String DYNAMIC_ACTUAL_PRODUCT_PRICE_BY_PRODUCT_TITLE = "XPATH=//a[text()='%s']/parent::h2[contains(@class, 'product-title')]/following-sibling::div[contains(@class, 'add-info')]//span[contains(@class, 'actual-price')]";
+    public final static String AJAX_LOADING_PRODUCT_LIST = "css=div.ajax-products-busy";
 }

@@ -28,7 +28,7 @@ public abstract class BasePage {
     private final int longTimeout = GlobalConstants.LONG_TIMEOUT;
     private final int shortTimeout = GlobalConstants.SHORT_TIMEOUT;
     WebDriver driver;
-    
+
     public BasePage(WebDriver driver) {
         this.driver = driver;
     }
@@ -201,6 +201,7 @@ public abstract class BasePage {
 
 
     protected void clickToElement(String locatorType) {
+        highlightElement(locatorType);
         if (driver.toString().contains("internet explorer")) {
             sleepInSecond(3);
             clickToElementByJS(locatorType);
@@ -814,7 +815,7 @@ public abstract class BasePage {
     }
 
     @Step("Hover to {linkText} header link")
-    public void hoverDynamicHeaderLinkByText(String linkText) {
+    public void hoverToDynamicHeaderLinkByText(String linkText) {
         waitForElementVisibility(NopCommerceBasePageUI.DYNAMIC_HEADER_LINK_BY_TEXT_USER, linkText);
         hoverMouseToElement(NopCommerceBasePageUI.DYNAMIC_HEADER_LINK_BY_TEXT_USER, linkText);
     }
@@ -876,5 +877,5 @@ public abstract class BasePage {
         waitForElementVisibility(NopCommerceBasePageUI.DYNAMIC_ACTUAL_PRODUCT_PRICE_BY_PRODUCT_TITLE, productTitle);
         return getElementText(NopCommerceBasePageUI.DYNAMIC_ACTUAL_PRODUCT_PRICE_BY_PRODUCT_TITLE, productTitle);
     }
-
+    
 }

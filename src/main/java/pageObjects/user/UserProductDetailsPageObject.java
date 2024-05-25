@@ -30,7 +30,7 @@ public class UserProductDetailsPageObject extends BasePage {
             case "1":
                 return "Bad";
             case "2":
-                return "Not good";
+                return "Not goods";
             case "3":
                 return "Not bad but also not excellent";
             case "4":
@@ -58,5 +58,18 @@ public class UserProductDetailsPageObject extends BasePage {
     public void clickToAddToWhistListButtonAtProductOverview() {
         waitForElementClickable(UserProductDetailsPageUI.ADD_TO_WHIST_LIST_BUTTON_AT_PRODUCT_OVERVIEW);
         clickToElement(UserProductDetailsPageUI.ADD_TO_WHIST_LIST_BUTTON_AT_PRODUCT_OVERVIEW);
+    }
+
+    @Step("Check to all `{productOrderSoftwareList}` software checkbox")
+    public void checkToSoftwareOptionsCheckBox(String[] productOrderSoftwareList) {
+        for (String productOrderSoftware : productOrderSoftwareList) {
+            checkToDefaultCheckboxRadioByLabel(productOrderSoftware);
+        }
+    }
+
+    @Step("Get product price at Product Overview")
+    public String getProductPrice() {
+        waitForElementVisibility(UserProductDetailsPageUI.PRODUCT_PRICE_AT_OVERVIEW);
+        return getElementText(UserProductDetailsPageUI.PRODUCT_PRICE_AT_OVERVIEW);
     }
 }

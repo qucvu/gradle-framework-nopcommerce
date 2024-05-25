@@ -24,7 +24,7 @@ public class User_05_Sort_Display_Paging extends BaseTest {
         driver = getBrowserDriver(browserName, browserVersion, environment.endUserUrl());
         Allure.step("Pre-condition: Go to the sub menu of homepage");
         homePage = PageGeneratorManager.getUserHomePage(driver);
-        homePage.hoverDynamicHeaderLinkByText(menu);
+        homePage.hoverToDynamicHeaderLinkByText(menu);
         homePage.clickDynamicHeaderMenuLinkByText(subMenu);
         productCategoryPage = PageGeneratorManager.getUserProductCategoryPage(driver);
         verifyTrue(productCategoryPage.isActiveLinkDisplayedByText(menu));
