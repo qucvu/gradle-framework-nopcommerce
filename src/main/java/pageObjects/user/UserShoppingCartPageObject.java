@@ -1,6 +1,7 @@
 package pageObjects.user;
 
 import commons.BasePage;
+import commons.PageGeneratorManager;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import pageUIs.user.UserShoppingCartPageUI;
@@ -42,5 +43,54 @@ public class UserShoppingCartPageObject extends BasePage {
     public String getPriceTotalAtMiniCart() {
         waitForElementVisibility(UserShoppingCartPageUI.PRODUCT_TOTAL_PRICE_AT_MINI_CART);
         return getElementText(UserShoppingCartPageUI.PRODUCT_TOTAL_PRICE_AT_MINI_CART);
+    }
+
+
+    @Step("Verify the info `{productInfo}` is displayed at Cart table")
+    public boolean isProductInfoDisplayedByProductTitleAtCartTable(String productTitle, String... productInfoList) {
+        for (String productInfo : productInfoList) {
+            waitForElementVisibility(UserShoppingCartPageUI.PRODUCT_INFO_BY_PRODUCT_TITLE_AT_CART_TABLE, productTitle, productInfo);
+            return isElementDisplayed(UserShoppingCartPageUI.PRODUCT_INFO_BY_PRODUCT_TITLE_AT_CART_TABLE, productTitle, productInfo);
+        }
+        return false;
+    }
+
+
+    @Step("Click to Edit link at Product `{productTitle}` link at Cart table")
+    public UserProductDetailsPageObject clickToEditLinkByProductTitleAtCartTable(String productTitle) {
+        waitForElementClickable(UserShoppingCartPageUI.EDIT_LINK_BY_PRODUCT_TITLE_AT_CART_TABLE, productTitle);
+        clickToElement(UserShoppingCartPageUI.EDIT_LINK_BY_PRODUCT_TITLE_AT_CART_TABLE, productTitle);
+        return PageGeneratorManager.getUserProductDetailsPage(driver);
+    }
+
+    @Step("Click to Remove button at `{productTitle}` row")
+    public void clickToRemoveButtonByProductTitleAtCartTable(String productTitle) {
+        waitForElementClickable(UserShoppingCartPageUI.REMOVE_BUTTON_BY_PRODUCT_TITLE_AT_CART_TABLE, productTitle);
+        clickToElement(UserShoppingCartPageUI.REMOVE_BUTTON_BY_PRODUCT_TITLE_AT_CART_TABLE, productTitle);
+    }
+
+    @Step("Verify the Shopping Cart is empty")
+    public boolean isEmptyShoppingCartMessageDisplayed() {
+        waitForElementVisibility(UserShoppingCartPageUI.EMPTY_SHOPPING_CART_MESSAGE);
+        return isElementDisplayed(UserShoppingCartPageUI.EMPTY_SHOPPING_CART_MESSAGE);
+    }
+
+    @Step("Enter to product quantity textbox with the value `{productQuantity}`")
+    public void enterToQuantityTextboxByProductTitle(String productTitle, String productQuantity) {
+        waitForElementVisibility(UserShoppingCartPageUI.QUANTITY_TEXTBOX_BY_PRODUCT_TITLE_AT_CART_TABLE, productTitle);
+        sendKeyToElementByJS(UserShoppingCartPageUI.QUANTITY_TEXTBOX_BY_PRODUCT_TITLE_AT_CART_TABLE, productQuantity, productTitle);
+    }
+
+
+    @Step("Click to `Checkout` button")
+    public void clickToCheckoutButton() {
+        waitForElementClickable(UserShoppingCartPageUI.CHECKOUT_BUTTON);
+        clickToElement(UserShoppingCartPageUI.CHECKOUT_BUTTON);
+    }
+
+    @Step("Increase the quantity Product of Product `{productTitle}`")
+    public void increaseQuantityProductByProductTitle(String productTitle) {
+        waitForElementClickable(UserShoppingCartPageUI.QUANTITY_UP_BY_PRODUCT_TITLE, productTitle);
+        clickToElementByJS(UserShoppingCartPageUI.QUANTITY_UP_BY_PRODUCT_TITLE, productTitle);
     }
 }

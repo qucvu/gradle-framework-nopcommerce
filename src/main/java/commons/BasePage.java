@@ -27,7 +27,7 @@ import java.util.Set;
 public abstract class BasePage {
     private final int longTimeout = GlobalConstants.LONG_TIMEOUT;
     private final int shortTimeout = GlobalConstants.SHORT_TIMEOUT;
-    WebDriver driver;
+    protected WebDriver driver;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -245,6 +245,23 @@ public abstract class BasePage {
         clearElement(locatorType, dynamicValues);
         getWebElement(locatorType, dynamicValues).sendKeys(textValue);
     }
+
+    protected void sendKeyToElementByJS(String locatorType, String textValue) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].value = '';", getWebElement(locatorType));
+        js.executeScript("arguments[0].value = arguments[1];", getWebElement(locatorType), textValue);
+        js.executeScript("arguments[0].dispatchEvent(new Event('change'));", getWebElement(locatorType));
+
+    }
+
+    protected void sendKeyToElementByJS(String locatorType, String textValue, String... dynamicValues) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        WebElement element = getWebElement(getDynamicLocator(locatorType, dynamicValues));
+        js.executeScript("arguments[0].value = '';", element);
+        js.executeScript("arguments[0].value = arguments[1];", element, textValue);
+        js.executeScript("arguments[0].dispatchEvent(new Event('change'));", element);
+    }
+
 
     protected String getElementText(String locatorType) {
         return getWebElement(locatorType).getText();
@@ -802,7 +819,7 @@ public abstract class BasePage {
     }
 
 
-    @Step("Check to {label} checkbox/radio")
+    @Step("Check to `{label}` checkbox/radio")
     public void checkToDefaultCheckboxRadioByLabel(String label) {
         waitForElementClickable(NopCommerceBasePageUI.DYNAMIC_CHECKBOX_RADIO_BY_LABEL, label);
         checkToDefaultCheckboxRadio(NopCommerceBasePageUI.DYNAMIC_CHECKBOX_RADIO_BY_LABEL, label);
@@ -816,6 +833,7 @@ public abstract class BasePage {
 
     @Step("Hover to {linkText} header link")
     public void hoverToDynamicHeaderLinkByText(String linkText) {
+        scrollToElement(NopCommerceBasePageUI.DYNAMIC_HEADER_LINK_BY_TEXT_USER, linkText);
         waitForElementVisibility(NopCommerceBasePageUI.DYNAMIC_HEADER_LINK_BY_TEXT_USER, linkText);
         hoverMouseToElement(NopCommerceBasePageUI.DYNAMIC_HEADER_LINK_BY_TEXT_USER, linkText);
     }
@@ -854,6 +872,7 @@ public abstract class BasePage {
 
     @Step("Hover to `Shopping Cart` link")
     public void hoverToHeaderShoppingCartLink() {
+        scrollToElement(NopCommerceBasePageUI.SHOPPING_CART_LINK);
         waitForElementVisibility(NopCommerceBasePageUI.SHOPPING_CART_LINK);
         hoverMouseToElement(NopCommerceBasePageUI.SHOPPING_CART_LINK);
     }
@@ -877,5 +896,74 @@ public abstract class BasePage {
         waitForElementVisibility(NopCommerceBasePageUI.DYNAMIC_ACTUAL_PRODUCT_PRICE_BY_PRODUCT_TITLE, productTitle);
         return getElementText(NopCommerceBasePageUI.DYNAMIC_ACTUAL_PRODUCT_PRICE_BY_PRODUCT_TITLE, productTitle);
     }
-    
+
+
+    public void waitForStableElement(String locatorType, int stableDurationInSeconds) {
+        while (true) {
+            WebElement element = new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.SHORT_TIMEOUT))
+                    .until(ExpectedConditions.visibilityOfElementLocated(getByLocator(locatorType)));
+            String initialText = element.getText();
+
+            boolean stable = true;
+            long checkEndTime = System.currentTimeMillis() + stableDurationInSeconds * 1000L;
+
+            while (System.currentTimeMillis() < checkEndTime) {
+                element = new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.SHORT_TIMEOUT))
+                        .until(ExpectedConditions.visibilityOfElementLocated(getByLocator(locatorType)));
+                if (!element.getText().equals(initialText)) {
+                    stable = false;
+                    break;
+                }
+            }
+            if (stable)
+                return;
+        }
+    }
+
+
+    @Step("Verify the `{information}` is displayed at Billing Address Info")
+    public boolean isBillingAddressInfoDisplayed(String... informations) {
+        for (String billingInfo : informations) {
+            waitForElementVisibility(NopCommerceBasePageUI.BILLING_ADDRESS_LIST_BY_INFO, billingInfo);
+            return isElementDisplayed(NopCommerceBasePageUI.BILLING_ADDRESS_LIST_BY_INFO, billingInfo);
+        }
+        return false;
+    }
+
+
+    @Step("Verify the `{information}` is displayed at Shipping Address Info")
+    public boolean isShippingAddressInfoDisplayed(String... informations) {
+        for (String shippingInfo : informations) {
+            waitForElementVisibility(NopCommerceBasePageUI.SHIPPING_ADDRESS_LIST_BY_INFO, shippingInfo);
+            return isElementDisplayed(NopCommerceBasePageUI.SHIPPING_ADDRESS_LIST_BY_INFO, shippingInfo);
+        }
+        return false;
+
+    }
+
+    @Step("Verify the product `{productTitle}` is displayed at Cart Table")
+    public boolean isProductTitleDisplayedAtCartTable(String productTitle) {
+        waitForElementVisibility(NopCommerceBasePageUI.PRODUCT_TITLE_AT_CART_TABLE, productTitle);
+        return isElementDisplayed(NopCommerceBasePageUI.PRODUCT_TITLE_AT_CART_TABLE, productTitle);
+    }
+
+    @Step("Get Unit Product Price of product `{productTitle}` at Cart Table ")
+    public String getProductPriceByProductTitleAtCartTable(String productTitle) {
+        waitForElementVisibility(NopCommerceBasePageUI.UNIT_PRODUCT_PRICE_BY_PRODUCT_TITLE_AT_CART_TABLE, productTitle);
+        return getElementText(NopCommerceBasePageUI.UNIT_PRODUCT_PRICE_BY_PRODUCT_TITLE_AT_CART_TABLE, productTitle);
+    }
+
+    @Step("Get Total price of product `{productPrice}` at Cart table")
+    public String getProductTotalPriceByProductTitleAtCartTable(String productTitle) {
+        waitForElementVisibility(NopCommerceBasePageUI.PRODUCT_TOTAL_PRICE_BY_PRODUCT_TITLE_AT_CART_TABLE, productTitle);
+        return getElementText(NopCommerceBasePageUI.PRODUCT_TOTAL_PRICE_BY_PRODUCT_TITLE_AT_CART_TABLE, productTitle);
+    }
+
+    @Step("Get product quantity of `{productTitle}` row at Cart Table")
+    public String getProductQuantityByProductTitleAtCartTable(String productTitle) {
+        waitForElementVisibility(NopCommerceBasePageUI.QUANTITY_BY_PRODUCT_TITLE_AT_CART_TABLE, productTitle);
+        return getElementText(NopCommerceBasePageUI.QUANTITY_BY_PRODUCT_TITLE_AT_CART_TABLE, productTitle);
+    }
+
+
 }

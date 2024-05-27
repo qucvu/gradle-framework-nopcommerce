@@ -62,10 +62,20 @@ public class PageGeneratorManager {
         return new UserProductComparisonPageObject(driver);
     }
 
-
     @Step("Initialize the User Recent Product View  Page ")
     public static UserProductViewRecentPageObject getUserProductViewRecentPage(WebDriver driver) {
         return new UserProductViewRecentPageObject(driver);
     }
+
+    @Step("Initialize the User Product Checkout Page ")
+    public static UserProductCheckoutPageObject getUserProductCheckoutPage(WebDriver driver) {
+        return new UserProductCheckoutPageObject(driver);
+    }
+
+    @Step("Initialize the User Order Page")
+    public static UserOrderPageObject getUserOrderPage(WebDriver driver) {
+        return new UserOrderPageObject(driver);
+    }
+
 
 }

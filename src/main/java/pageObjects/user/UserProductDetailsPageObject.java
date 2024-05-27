@@ -1,6 +1,7 @@
 package pageObjects.user;
 
 import commons.BasePage;
+import commons.GlobalConstants;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import pageUIs.user.UserProductDetailsPageUI;
@@ -69,7 +70,16 @@ public class UserProductDetailsPageObject extends BasePage {
 
     @Step("Get product price at Product Overview")
     public String getProductPrice() {
-        waitForElementVisibility(UserProductDetailsPageUI.PRODUCT_PRICE_AT_OVERVIEW);
+        waitForStableElement(UserProductDetailsPageUI.PRODUCT_PRICE_AT_OVERVIEW, GlobalConstants.STABLE_TIME_DURATION);
         return getElementText(UserProductDetailsPageUI.PRODUCT_PRICE_AT_OVERVIEW);
     }
+
+    @Step("Uncheck to all `{productOrderSoftwareList}` software checkbox")
+    public void unCheckToSoftwareOptionsCheckBox(String[] productOrderSoftwareList) {
+        for (String productOrderSoftware : productOrderSoftwareList) {
+            unCheckToDefaultCheckboxByLabel(productOrderSoftware);
+        }
+    }
+
+
 }

@@ -1,5 +1,6 @@
 package utilities;
 
+import com.github.javafaker.CreditCardType;
 import com.github.javafaker.Faker;
 
 import java.nio.ByteBuffer;
@@ -87,4 +88,13 @@ public class DataHelper {
         return Base64.getUrlEncoder().withoutPadding().encodeToString(byteBuffer.array()).substring(0, 10);
     }
 
+    public String getVisaCarNumber() {
+        return faker.finance().creditCard(CreditCardType.VISA);
+    }
+
+    public String getCardCodeNumber() {
+        return faker.number().digits(3);
+    }
+
+    
 }
