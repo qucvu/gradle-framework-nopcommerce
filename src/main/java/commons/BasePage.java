@@ -920,7 +920,6 @@ public abstract class BasePage {
         }
     }
 
-
     @Step("Verify the `{information}` is displayed at Billing Address Info")
     public boolean isBillingAddressInfoDisplayed(String... informations) {
         for (String billingInfo : informations) {
@@ -965,5 +964,47 @@ public abstract class BasePage {
         return getElementText(NopCommerceBasePageUI.QUANTITY_BY_PRODUCT_TITLE_AT_CART_TABLE, productTitle);
     }
 
+    @Step("Verify the header `{header}` is displayed at `{header}` Page")
+    public boolean isContentHeaderDisplayedByHeaderAdminPage(String header) {
+        waitForElementVisibility(NopCommerceBasePageUI.CONTENT_HEADER_BY_HEADER_ADMIN_PAGE, header);
+        return isElementDisplayed(NopCommerceBasePageUI.CONTENT_HEADER_BY_HEADER_ADMIN_PAGE, header);
+    }
 
+    @Step("Click To `{linkText}` link has the tree view")
+    public void clickToDynamicNavTreeViewLinkAdminPage(String linkText) {
+        if (isElementUndisplayed(NopCommerceBasePageUI.DYNAMIC_ACTIVE_NAV_LINK_TREE_VIEW_SECTION_ADMIN_PAGE, linkText)) {
+            waitForElementClickable(NopCommerceBasePageUI.DYNAMIC_NAV_LINK_TREE_VIEW_SECTION_ADMIN_PAGE, linkText);
+            clickToElement(NopCommerceBasePageUI.DYNAMIC_NAV_LINK_TREE_VIEW_SECTION_ADMIN_PAGE, linkText);
+        }
+    }
+
+    public void clickToDynamicNavLinkByParentSectionAdminPage(String parentSection, String linkText) {
+        waitForElementClickable(NopCommerceBasePageUI.DYNAMIC_NAV_LINK_ITEM_BY_PARENT_SECTION, parentSection, linkText);
+        clickToElement(NopCommerceBasePageUI.DYNAMIC_NAV_LINK_ITEM_BY_PARENT_SECTION, parentSection, linkText);
+
+    }
+
+    public int getItemResultQuantityAdminPage() {
+        waitForAllElementInVisibility(NopCommerceBasePageUI.ITEM_QUANTITY_RESULT_ADMIN_PAGE);
+        return getElementsSize(NopCommerceBasePageUI.ITEM_QUANTITY_RESULT_ADMIN_PAGE);
+    }
+
+    @Step("Verify the Table Result is empty")
+    public boolean isEmptyDataTableMessageDisplayedAdminPage() {
+        waitForElementVisibility(NopCommerceBasePageUI.EMPTY_TABLE_MESSAGE_ADMIN_PAGE);
+        return isElementDisplayed(NopCommerceBasePageUI.EMPTY_TABLE_MESSAGE_ADMIN_PAGE);
+    }
+
+    @Step("Check to `{label}` checkbox/radio")
+    public void checkToDefaultCheckboxRadioByLabelAdminPage(String label) {
+        waitForElementClickable(NopCommerceBasePageUI.DYNAMIC_CHECKBOX_RADIO_BY_LABEL_ADMIN_PAGE, label);
+        checkToDefaultCheckboxRadio(NopCommerceBasePageUI.DYNAMIC_CHECKBOX_RADIO_BY_LABEL_ADMIN_PAGE, label);
+    }
+
+    @Step("Uncheck to `{label}` checkbox/radio")
+    public void unCheckToDefaultCheckboxRadioByLabelAdminPage(String label) {
+        waitForElementClickable(NopCommerceBasePageUI.DYNAMIC_CHECKBOX_RADIO_BY_LABEL_ADMIN_PAGE, label);
+        unCheckToDefaultCheckbox(NopCommerceBasePageUI.DYNAMIC_CHECKBOX_RADIO_BY_LABEL_ADMIN_PAGE, label);
+
+    }
 }

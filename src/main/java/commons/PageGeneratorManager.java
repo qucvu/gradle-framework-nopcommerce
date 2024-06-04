@@ -2,6 +2,9 @@ package commons;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
+import pageObjects.admin.AdminDashboardPageObject;
+import pageObjects.admin.AdminLoginPageObject;
+import pageObjects.admin.AdminProductPageObject;
 import pageObjects.user.*;
 
 public class PageGeneratorManager {
@@ -77,5 +80,20 @@ public class PageGeneratorManager {
         return new UserOrderPageObject(driver);
     }
 
+    @Step("Initialize the Admin Login Page")
+    public static AdminLoginPageObject getAdminLoginPage(WebDriver driver) {
+        return new AdminLoginPageObject(driver);
+    }
+
+    @Step("Initialize the Admin Dashboard Page")
+    public static AdminDashboardPageObject getAdminDashboardPage(WebDriver driver) {
+        return new AdminDashboardPageObject(driver);
+    }
+
+
+    @Step("Initialize the Admin Product Page")
+    public static AdminProductPageObject getAdminProductPage(WebDriver driver) {
+        return new AdminProductPageObject(driver);
+    }
 
 }

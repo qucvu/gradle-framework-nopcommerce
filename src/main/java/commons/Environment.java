@@ -8,4 +8,8 @@ public interface Environment extends Config {
 
     String adminUrl();
 
+    String adminEmail();
+
+    String adminPassword();
+
 }

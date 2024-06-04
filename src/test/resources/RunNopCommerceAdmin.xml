@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Run all testcases Nopcommerce - User" parallel="tests" thread-count="2">
+    <parameter name="runConfig" value="local"/>
+    <parameter name="osName" value="Windows"/>
+    <parameter name="osVersion" value="10"/>
+    <parameter name="hubPort" value="4444"/>
+    <listeners>
+        <listener class-name="reportConfigs.AllureTestListener"/>
+        <listener class-name="commons.MethodListener"/>
+    </listeners>
+    <test name="Run on Chrome">
+        <parameter name="browserName" value="chrome"/>
+        <parameter name="browserVersion" value="124"/>
+        <classes>
+            <class name="com.nopcommerce.common.Common_02_Login_Admin"/>
+            <class name="com.nopcommerce.admin.Admin_01_Search_Product"/>
+        </classes>
+    </test>
+
+
+</suite>

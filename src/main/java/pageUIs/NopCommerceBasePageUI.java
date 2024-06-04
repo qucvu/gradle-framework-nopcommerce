@@ -34,5 +34,14 @@ public class NopCommerceBasePageUI {
     public static final String UNIT_PRODUCT_PRICE_BY_PRODUCT_TITLE_AT_CART_TABLE = "xpath=//a[contains(@class, 'product-name') and text()='%s']/parent::td/following-sibling::td[contains(@class, 'unit-price')]/span";
     public static final String PRODUCT_TOTAL_PRICE_BY_PRODUCT_TITLE_AT_CART_TABLE = "XPATH=//a[contains(@class, 'product-name') and text()='%s']/parent::td/following-sibling::td[contains(@class, 'subtotal')]/span";
 
+    public final static String CONTENT_HEADER_BY_HEADER_ADMIN_PAGE = "XPATH=//div[contains(@class, 'content-header')]/h1[contains(text(), '%s')]";
+    public final static String AJAX_LOADING_ADMIN_PAGE = "id=ajaxBusy";
+    public final static String DYNAMIC_NAV_LINK_TREE_VIEW_SECTION_ADMIN_PAGE = "xpath=//p[contains(text(), '%s')]/parent::a/parent::li[contains(@class, 'has-treeview')]";
+    public final static String DYNAMIC_ACTIVE_NAV_LINK_TREE_VIEW_SECTION_ADMIN_PAGE = "xpath=//p[contains(text(), '%s')]/parent::a[contains(@class, 'active')]/parent::li[contains(@class, 'has-treeview')]";
+    public final static String DYNAMIC_NAV_LINK_ITEM_BY_PARENT_SECTION = "XPATH=//p[contains(text(), '%s')]/parent::a/parent::li[contains(@class, 'has-treeview')]/ul[contains(@class, 'nav-treeview')]//p[contains(text(), '%s')]/parent::a";
+    public final static String ITEM_QUANTITY_RESULT_ADMIN_PAGE = "css=table#products-grid>tbody>tr";
+    public final static String EMPTY_TABLE_MESSAGE_ADMIN_PAGE = "xpath=//td[contains(@class, 'dataTables_empty') and text() = 'No data available in table']";
+
+    public final static String DYNAMIC_CHECKBOX_RADIO_BY_LABEL_ADMIN_PAGE = "xpath=//label[text()='%s']/parent::div/parent::div/following-sibling::div[1]/input";
 
 }

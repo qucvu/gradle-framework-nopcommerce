@@ -23,4 +23,6 @@ public class FirefoxDriverManager implements BrowserFactory {
         options.addPreference("pdfjs.disabled", true);
         return new FirefoxDriver(options);
     }
+
+    
 }
