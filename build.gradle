@@ -19,7 +19,7 @@ configurations {
 }
 dependencies {
     implementation 'org.jetbrains:annotations:20.1.0'
-    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.18.1'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.21.0'
     implementation 'org.testng:testng:7.1.0'
     testImplementation group: 'org.testng', name: 'testng', version: '7.9.0'
     implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.7.0'
@@ -38,13 +38,15 @@ test {
             suites "src/test/resources/RunNopCommerceUser.xml"
         }
         outputDirectory = file("$buildDir/testng-reports")
+        useDefaultListeners = true
     }
     systemProperty("file.encoding", "utf-8")
     systemProperty("env", System.getProperty("envGradle"))
-    testLogging.showStandardStreams = true
+    testLogging {
+        showStandardStreams = true
+    }
 
     reports {
-        junitXml.destination = file("$buildDir/testng-reports/reportXML")
         html.destination = file("$buildDir/testng-reports/reportHTML")
     }
 
