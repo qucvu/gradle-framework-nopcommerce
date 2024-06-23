@@ -44,8 +44,8 @@ test {
     testLogging.showStandardStreams = true
 
     reports {
-        junitXml.destination = file("$buildDir/testng-reports/xml")
-        html.destination = file("$buildDir/testng-reports/html")
+        junitXml.destination = file("$buildDir/testng-reports/reportXML")
+        html.destination = file("$buildDir/testng-reports/reportHTML")
     }
 
 }
