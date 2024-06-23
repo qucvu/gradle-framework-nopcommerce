@@ -22,4 +22,9 @@ public class AdminProductPageObject extends BasePage {
         clickToElement(AdminProductPageUI.SEARCH_BUTTON);
     }
 
+    @Step("Verify the Product details page is reached with {productName}")
+    public boolean isProductDetailPageReachedByProductName(String productName) {
+        waitForElementVisibility(AdminProductPageUI.PRODUCT_DETAIL_TITLE_BY_PRODUCT_NAME, productName);
+        return isElementDisplayed(AdminProductPageUI.PRODUCT_DETAIL_TITLE_BY_PRODUCT_NAME, productName);
+    }
 }

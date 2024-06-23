@@ -3,6 +3,7 @@ package pageUIs;
 public class NopCommerceBasePageUI {
     public final static String DYNAMIC_TEXTBOX_BY_ID = "css=input#%s";
     public final static String DYNAMIC_BUTTON_BY_TEXT = "xpath=//button[text()='%s']";
+    public final static String DYNAMIC_BUTTON_BY_NAME = "css=button[name='%s']";
     public final static String DYNAMIC_LINK_BY_TEXT_USER_MAIN_CONTENT = "xpath=//div[@id='main']//a[contains(text(), '%s')]";
     public final static String DYNAMIC_FOOTER_LINK_BY_TEXT_USER = "xpath=//div[contains(@class, 'footer')]//a[contains(text(), '%s')]";
     public final static String DYNAMIC_HEADER_LINK_BY_TEXT_USER = "xpath=//div[contains(@class, 'header')]//ul[contains(@class, 'notmobile')]//a[contains(text(), '%s')]";

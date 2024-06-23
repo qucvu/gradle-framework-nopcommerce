@@ -31,10 +31,13 @@ dependencies {
 
 test {
     jvmArgs = ["-javaagent:${configurations.agent.singleFile}",]
-    if (project.hasProperty('suiteFile')) {
-        useTestNG {
-            suites project.property('suiteFile')
+    useTestNG {
+        if (project.hasProperty('suiteFile')) {
+            suites "src/test/resources/${project.property('suiteFile')}"
+        } else {
+            suites "src/test/resources/RunNopCommerceUser.xml"
         }
+        outputDirectory = file("$buildDir/testng-reports")
     }
     systemProperty("file.encoding", "utf-8")
     systemProperty("env", System.getProperty("envGradle"))

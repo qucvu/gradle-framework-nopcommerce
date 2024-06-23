@@ -14,7 +14,7 @@
         <parameter name="browserVersion" value="124"/>
         <classes>
             <class name="com.nopcommerce.common.Common_02_Login_Admin"/>
-            <class name="com.nopcommerce.admin.Admin_01_Search_Product"/>
+            <class name="com.nopcommerce.admin.Admin_02_Product_SKU"/>
         </classes>
     </test>
 

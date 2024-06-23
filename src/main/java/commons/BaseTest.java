@@ -44,7 +44,6 @@ public abstract class BaseTest {
         BaseTest.osName = osName;
         BaseTest.osVersion = osVersion;
         BaseTest.portNumber = hubPort;
-        deleteAllFileInFolder("allure-results");
     }
 
 

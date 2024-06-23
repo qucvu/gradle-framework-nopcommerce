@@ -683,6 +683,13 @@ public abstract class BasePage {
         clickToElement(NopCommerceBasePageUI.DYNAMIC_BUTTON_BY_TEXT, textValue);
     }
 
+    @Step("Click to button {textValue}")
+    public void clickToButtonByName(String textValue) {
+        waitForElementClickable(NopCommerceBasePageUI.DYNAMIC_BUTTON_BY_NAME, textValue);
+        clickToElement(NopCommerceBasePageUI.DYNAMIC_BUTTON_BY_NAME, textValue);
+    }
+
+
     protected void deleteFileByFilePath(String filePath) {
         try {
             Files.deleteIfExists(
