@@ -41,4 +41,11 @@ test {
     }
     systemProperty("file.encoding", "utf-8")
     systemProperty("env", System.getProperty("envGradle"))
+    testLogging.showStandardStreams = true
+
+    reports {
+        junitXml.destination = file("$buildDir/testng-reports/xml")
+        html.destination = file("$buildDir/testng-reports/html")
+    }
+
 }
