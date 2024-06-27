@@ -4,6 +4,7 @@ import com.github.javafaker.CreditCardType;
 import com.github.javafaker.Faker;
 
 import java.nio.ByteBuffer;
+import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.util.Date;
 import java.util.Locale;
@@ -39,6 +40,12 @@ public class DataHelper {
     public Date getBirthday() {
         return faker.date().birthday();
     }
+
+    public String getBirthdayWithFormat(String format) {
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        return sdf.format(faker.date().birthday());
+    }
+
 
     public String getCompanyName() {
         return faker.company().name();
@@ -96,5 +103,5 @@ public class DataHelper {
         return faker.number().digits(3);
     }
 
-    
+
 }
