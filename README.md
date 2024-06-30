@@ -6,7 +6,7 @@
 ## Tech Stack
 Language: Java 17
 
-Testing tool: Selenium 4.18.1
+Testing tool: Selenium 4.21.0
 
 Testing framework: TestNG 7.1.0
 
@@ -23,6 +23,7 @@ Other libraries: webdriver-manager, javafaker, java owner ...
 - Run Selenium on Docker
 - Retry test cases fail
 - Integrate GitHub Webhook with Jenkins CI
+  
 ## Authors
 - [@qucvu]
 
