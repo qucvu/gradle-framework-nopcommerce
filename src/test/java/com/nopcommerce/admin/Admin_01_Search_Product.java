@@ -38,7 +38,7 @@ public class Admin_01_Search_Product extends BaseTest {
     @Test
     public void Search_01_Product_Name() {
         adminProductPage.enterToDynamicTextboxById("Product Name", "SearchProductName", productSearchName);
-        adminProductPage.clickToSearchButton();
+        adminProductPage.clickToSearchButtonAdminPage();
         verifyEquals(adminProductPage.getItemResultQuantityAdminPage(), 1);
         verifyTrue(adminProductPage.isProductNameDisplayedAtTable(productSearchName));
     }
@@ -48,7 +48,7 @@ public class Admin_01_Search_Product extends BaseTest {
     public void Search_02_Product_Name() {
         adminProductPage.enterToDynamicTextboxById("Product Name", "SearchProductName", productSearchName);
         adminProductPage.selectToDefaultDropdownByName("Search Category", "SearchCategoryId", "Computers");
-        adminProductPage.clickToSearchButton();
+        adminProductPage.clickToSearchButtonAdminPage();
         verifyTrue(adminProductPage.isEmptyDataTableMessageDisplayedAdminPage());
 
     }
@@ -59,7 +59,7 @@ public class Admin_01_Search_Product extends BaseTest {
         adminProductPage.enterToDynamicTextboxById("Product Name", "SearchProductName", productSearchName);
         adminProductPage.selectToDefaultDropdownByName("Search Category", "SearchCategoryId", "Computers");
         adminProductPage.checkToDefaultCheckboxRadioByLabelAdminPage("Search subcategories");
-        adminProductPage.clickToSearchButton();
+        adminProductPage.clickToSearchButtonAdminPage();
         verifyEquals(adminProductPage.getItemResultQuantityAdminPage(), 1);
         verifyTrue(adminProductPage.isProductNameDisplayedAtTable(productSearchName));
 
@@ -73,7 +73,7 @@ public class Admin_01_Search_Product extends BaseTest {
         adminProductPage.enterToDynamicTextboxById("Product Name", "SearchProductName", productSearchName);
         adminProductPage.selectToDefaultDropdownByName("Search Category", "SearchCategoryId", "Computers >> Desktops");
         adminProductPage.unCheckToDefaultCheckboxRadioByLabelAdminPage("Search subcategories");
-        adminProductPage.clickToSearchButton();
+        adminProductPage.clickToSearchButtonAdminPage();
         verifyEquals(adminProductPage.getItemResultQuantityAdminPage(), 1);
         verifyTrue(adminProductPage.isProductNameDisplayedAtTable(productSearchName));
 
@@ -86,7 +86,7 @@ public class Admin_01_Search_Product extends BaseTest {
         adminProductPage.selectToDefaultDropdownByName("Search Category", "SearchCategoryId", "All");
         adminProductPage.unCheckToDefaultCheckboxRadioByLabelAdminPage("Search subcategories");
         adminProductPage.selectToDefaultDropdownByName("Manufacturer", "SearchManufacturerId", "Apple");
-        adminProductPage.clickToSearchButton();
+        adminProductPage.clickToSearchButtonAdminPage();
         verifyTrue(adminProductPage.isProductNameDisplayedAtTable(productSearchName));
     }
 

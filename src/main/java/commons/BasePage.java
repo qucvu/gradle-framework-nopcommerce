@@ -672,6 +672,13 @@ public abstract class BasePage {
         sendKeyToElement(NopCommerceBasePageUI.DYNAMIC_TEXTBOX_BY_ID, value, textID);
     }
 
+    @Step("Clear `{nameTextBox}` Text box")
+    public void clearDynamicTextBoxById(String nameTextBox, String textID) {
+        waitForElementVisibility(NopCommerceBasePageUI.DYNAMIC_TEXTBOX_BY_ID, textID);
+        clearElement(NopCommerceBasePageUI.DYNAMIC_TEXTBOX_BY_ID, textID);
+    }
+
+
     /**
      * This method click to the button by text
      *
@@ -684,9 +691,9 @@ public abstract class BasePage {
     }
 
     @Step("Click to button {textValue}")
-    public void clickToButtonByName(String textValue) {
-        waitForElementClickable(NopCommerceBasePageUI.DYNAMIC_BUTTON_BY_NAME, textValue);
-        clickToElement(NopCommerceBasePageUI.DYNAMIC_BUTTON_BY_NAME, textValue);
+    public void clickToButtonByName(String nameValue) {
+        waitForElementClickable(NopCommerceBasePageUI.DYNAMIC_BUTTON_BY_NAME, nameValue);
+        clickToElement(NopCommerceBasePageUI.DYNAMIC_BUTTON_BY_NAME, nameValue);
     }
 
 
@@ -733,8 +740,8 @@ public abstract class BasePage {
 
     @Step("Get the error message under '{textboxName}' textbox")
     public String getDynamicErrorMessageUnderTextboxById(String textboxName, String textId) {
-        waitForElementVisibility(NopCommerceBasePageUI.DYNAMIC_MESSAGE_UNDER_TEXTBOOX_BY_ID, textId);
-        return getElementText(NopCommerceBasePageUI.DYNAMIC_MESSAGE_UNDER_TEXTBOOX_BY_ID, textId);
+        waitForElementVisibility(NopCommerceBasePageUI.DYNAMIC_ELEMENT_BY_ID, textId);
+        return getElementText(NopCommerceBasePageUI.DYNAMIC_ELEMENT_BY_ID, textId);
     }
 
     @Step("Click to logout link")
@@ -928,8 +935,8 @@ public abstract class BasePage {
     }
 
     @Step("Verify the `{information}` is displayed at Billing Address Info")
-    public boolean isBillingAddressInfoDisplayed(String... informations) {
-        for (String billingInfo : informations) {
+    public boolean isBillingAddressInfoDisplayed(String... information) {
+        for (String billingInfo : information) {
             waitForElementVisibility(NopCommerceBasePageUI.BILLING_ADDRESS_LIST_BY_INFO, billingInfo);
             return isElementDisplayed(NopCommerceBasePageUI.BILLING_ADDRESS_LIST_BY_INFO, billingInfo);
         }
@@ -1002,6 +1009,13 @@ public abstract class BasePage {
         return isElementDisplayed(NopCommerceBasePageUI.EMPTY_TABLE_MESSAGE_ADMIN_PAGE);
     }
 
+    @Step("Verify the Table Result is empty at Table `{tableId}`")
+    public boolean isEmptyDataTableMessageDisplayedByTableIdAdminPage(String tableId) {
+        waitForElementVisibility(NopCommerceBasePageUI.EMPTY_TABLE_MESSAGE_BY_TABLE_ID_ADMIN_PAGE, tableId);
+        return isElementDisplayed(NopCommerceBasePageUI.EMPTY_TABLE_MESSAGE_BY_TABLE_ID_ADMIN_PAGE, tableId);
+    }
+
+
     @Step("Check to `{label}` checkbox/radio")
     public void checkToDefaultCheckboxRadioByLabelAdminPage(String label) {
         waitForElementClickable(NopCommerceBasePageUI.DYNAMIC_CHECKBOX_RADIO_BY_LABEL_ADMIN_PAGE, label);
@@ -1014,4 +1028,41 @@ public abstract class BasePage {
         unCheckToDefaultCheckbox(NopCommerceBasePageUI.DYNAMIC_CHECKBOX_RADIO_BY_LABEL_ADMIN_PAGE, label);
 
     }
+
+    @Step("Click to `Search` button")
+    public void clickToSearchButtonAdminPage() {
+        waitForElementClickable(NopCommerceBasePageUI.SEARCH_BUTTON_ADMIN_PAGE);
+        clickToElement(NopCommerceBasePageUI.SEARCH_BUTTON_ADMIN_PAGE);
+    }
+
+    @Step("Click to Add New Button")
+    public void clickToAddNewButtonAdminPage() {
+        waitForElementClickable(NopCommerceBasePageUI.ADD_NEW_BUTTON_ADMIN_PAGE);
+        clickToElement(NopCommerceBasePageUI.ADD_NEW_BUTTON_ADMIN_PAGE);
+    }
+
+    @Step("Verify the Alert Message `{alertMessage}` is displayed")
+    public boolean isAlertMessagePageDisplayed(String alertMessage) {
+        waitForAllElementVisibility(NopCommerceBasePageUI.ALERT_MESSAGE_ADMIN_PAGE, alertMessage);
+        return isElementDisplayed(NopCommerceBasePageUI.ALERT_MESSAGE_ADMIN_PAGE, alertMessage);
+    }
+
+    @Step("Get the text at `{nameElement}` element")
+    public String getDynamicElementTextById(String nameElement, String textId) {
+        waitForElementVisibility(NopCommerceBasePageUI.DYNAMIC_ELEMENT_BY_ID, textId);
+        return getElementText(NopCommerceBasePageUI.DYNAMIC_ELEMENT_BY_ID, textId);
+    }
+
+    @Step("Click to `Edit` link at row with email: {emailCustomer}")
+    public void clickToEditLinkByEmailAtAdminTable(String emailCustomer) {
+        waitForElementClickable(NopCommerceBasePageUI.EDIT_LINK_AT_TABLE_ROW_BY_EMAIL_CUSTOMER, emailCustomer);
+        clickToElement(NopCommerceBasePageUI.EDIT_LINK_AT_TABLE_ROW_BY_EMAIL_CUSTOMER, emailCustomer);
+    }
+
+    @Step("Click to `Delete` link at row with email: {emailCustomer}")
+    public void clickToDeleteLinkByEmailAtAdminTable(String emailCustomer) {
+        waitForElementClickable(NopCommerceBasePageUI.DELETE_LINK_AT_TABLE_ROW_BY_EMAIL_CUSTOMER, emailCustomer);
+        clickToElement(NopCommerceBasePageUI.DELETE_LINK_AT_TABLE_ROW_BY_EMAIL_CUSTOMER, emailCustomer);
+    }
+
 }

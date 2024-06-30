@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import pageObjects.admin.AdminDashboardPageObject;
 import pageObjects.admin.AdminLoginPageObject;
+import pageObjects.admin.AdminManageCustomerPageObject;
 import pageObjects.admin.AdminProductPageObject;
 import pageObjects.user.*;
 
@@ -95,5 +96,11 @@ public class PageGeneratorManager {
     public static AdminProductPageObject getAdminProductPage(WebDriver driver) {
         return new AdminProductPageObject(driver);
     }
+
+    @Step("Initialize the Admin Manage Customer Page")
+    public static AdminManageCustomerPageObject getAdminManageCustomerPage(WebDriver driver) {
+        return new AdminManageCustomerPageObject(driver);
+    }
+
 
 }

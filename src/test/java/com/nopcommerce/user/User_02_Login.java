@@ -14,8 +14,8 @@ import org.testng.annotations.Test;
 import pageObjects.user.UserHomePageObject;
 import pageObjects.user.UserLoginPageObject;
 import pageObjects.user.UserRegisterPageObject;
+import testData.dataModel.UserLogin;
 import utilities.DataHelper;
-import utilities.dataModel.UserLogin;
 
 @Feature("User Login")
 public class User_02_Login extends BaseTest {

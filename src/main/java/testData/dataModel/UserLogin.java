@@ -1,4 +1,4 @@
-package utilities.dataModel;
+package testData.dataModel;
 
 public class UserLogin {
     private String email, password;
