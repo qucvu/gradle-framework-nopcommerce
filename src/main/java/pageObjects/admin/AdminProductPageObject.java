@@ -16,11 +16,6 @@ public class AdminProductPageObject extends BasePage {
         return isElementDisplayed(AdminProductPageUI.PRODUCT_DATA_AT_TABLE, productName);
     }
 
-    @Step("Click to `Search` button")
-    public void clickToSearchButton() {
-        waitForElementClickable(AdminProductPageUI.SEARCH_BUTTON);
-        clickToElement(AdminProductPageUI.SEARCH_BUTTON);
-    }
 
     @Step("Verify the Product details page is reached with {productName}")
     public boolean isProductDetailPageReachedByProductName(String productName) {

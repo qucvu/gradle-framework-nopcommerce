@@ -4,7 +4,7 @@ import commons.BasePage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import pageUIs.user.UserLoginPageUI;
-import utilities.dataModel.UserLogin;
+import testData.dataModel.UserLogin;
 
 public class UserLoginPageObject extends BasePage {
     public UserLoginPageObject(WebDriver driver) {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Run all testcases Nopcommerce - User" parallel="tests" thread-count="2">
+<suite name="Run all testcases Nopcommerce - User" thread-count="2">
     <parameter name="runConfig" value="local"/>
     <parameter name="osName" value="Windows"/>
     <parameter name="osVersion" value="10"/>
@@ -9,14 +9,18 @@
         <listener class-name="reportConfigs.AllureTestListener"/>
         <listener class-name="commons.MethodListener"/>
     </listeners>
-    <test name="Run on Chrome">
+    <test name="Run Common Login Admin">
         <parameter name="browserName" value="chrome"/>
         <parameter name="browserVersion" value="124"/>
         <classes>
             <class name="com.nopcommerce.common.Common_02_Login_Admin"/>
-            <class name="com.nopcommerce.admin.Admin_02_Product_SKU"/>
         </classes>
     </test>
-
-
+    <test name="Run on Chrome - Admin Page">
+        <parameter name="browserName" value="chrome"/>
+        <parameter name="browserVersion" value="124"/>
+        <packages>
+            <package name="com.nopcommerce.admin"/>
+        </packages>
+    </test>
 </suite>

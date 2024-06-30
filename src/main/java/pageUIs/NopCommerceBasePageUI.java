@@ -1,7 +1,7 @@
 package pageUIs;
 
 public class NopCommerceBasePageUI {
-    public final static String DYNAMIC_TEXTBOX_BY_ID = "css=input#%s";
+    public final static String DYNAMIC_TEXTBOX_BY_ID = "id=%s";
     public final static String DYNAMIC_BUTTON_BY_TEXT = "xpath=//button[text()='%s']";
     public final static String DYNAMIC_BUTTON_BY_NAME = "css=button[name='%s']";
     public final static String DYNAMIC_LINK_BY_TEXT_USER_MAIN_CONTENT = "xpath=//div[@id='main']//a[contains(text(), '%s')]";
@@ -13,7 +13,7 @@ public class NopCommerceBasePageUI {
     public final static String WHIST_LIST_LINK = "css=a.ico-wishlist";
     public final static String MY_ACCOUNT_LINK = "CSS=a.ico-account";
     public final static String SHOPPING_CART_LINK = "CSS=a.ico-cart";
-    public final static String DYNAMIC_MESSAGE_UNDER_TEXTBOOX_BY_ID = "id=%s";
+    public final static String DYNAMIC_ELEMENT_BY_ID = "id=%s";
     public final static String DYNAMIC_DROPDOWN_BY_NAME = "css=select[name='%s']";
     public final static String MESSAGE_AT_HEADER_BAR_NOTIFICATION = "css=div.bar-notification>p";
     public final static String CLOSE_BAR_NOTIFICATION = "css=div.bar-notification>span.close";
@@ -36,13 +36,18 @@ public class NopCommerceBasePageUI {
     public static final String PRODUCT_TOTAL_PRICE_BY_PRODUCT_TITLE_AT_CART_TABLE = "XPATH=//a[contains(@class, 'product-name') and text()='%s']/parent::td/following-sibling::td[contains(@class, 'subtotal')]/span";
 
     public final static String CONTENT_HEADER_BY_HEADER_ADMIN_PAGE = "XPATH=//div[contains(@class, 'content-header')]/h1[contains(text(), '%s')]";
-    public final static String AJAX_LOADING_ADMIN_PAGE = "id=ajaxBusy";
     public final static String DYNAMIC_NAV_LINK_TREE_VIEW_SECTION_ADMIN_PAGE = "xpath=//p[contains(text(), '%s')]/parent::a/parent::li[contains(@class, 'has-treeview')]";
     public final static String DYNAMIC_ACTIVE_NAV_LINK_TREE_VIEW_SECTION_ADMIN_PAGE = "xpath=//p[contains(text(), '%s')]/parent::a[contains(@class, 'active')]/parent::li[contains(@class, 'has-treeview')]";
     public final static String DYNAMIC_NAV_LINK_ITEM_BY_PARENT_SECTION = "XPATH=//p[contains(text(), '%s')]/parent::a/parent::li[contains(@class, 'has-treeview')]/ul[contains(@class, 'nav-treeview')]//p[contains(text(), '%s')]/parent::a";
-    public final static String ITEM_QUANTITY_RESULT_ADMIN_PAGE = "css=table#products-grid>tbody>tr";
+    public final static String ITEM_QUANTITY_RESULT_ADMIN_PAGE = "css=table.dataTable>tbody>tr";
     public final static String EMPTY_TABLE_MESSAGE_ADMIN_PAGE = "xpath=//td[contains(@class, 'dataTables_empty') and text() = 'No data available in table']";
+    public final static String EMPTY_TABLE_MESSAGE_BY_TABLE_ID_ADMIN_PAGE = "xpath=//table[@id='%s']//td[contains(@class, 'dataTables_empty') and text() = 'No data available in table']";
 
     public final static String DYNAMIC_CHECKBOX_RADIO_BY_LABEL_ADMIN_PAGE = "xpath=//label[text()='%s']/parent::div/parent::div/following-sibling::div[1]/input";
 
+    public final static String SEARCH_BUTTON_ADMIN_PAGE = "css=button.btn-search";
+    public final static String ADD_NEW_BUTTON_ADMIN_PAGE = "XPATH=//a[contains(., 'Add new') and contains(@class, 'btn')]";
+    public final static String ALERT_MESSAGE_ADMIN_PAGE = "XPATH=//div[contains(@class, 'alert') and contains(., '%s')]";
+    public final static String EDIT_LINK_AT_TABLE_ROW_BY_EMAIL_CUSTOMER = "xpath=//table[contains(@class, 'dataTable')]/tbody//td[text()='%s']/following-sibling::td/a[contains(@href,'Edit')]";
+    public final static String DELETE_LINK_AT_TABLE_ROW_BY_EMAIL_CUSTOMER = "xpath=//table[contains(@class, 'dataTable')]/tbody//td[text()='%s']/following-sibling::td/a[contains(text(),'Delete')]";
 }
