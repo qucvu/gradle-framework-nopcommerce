@@ -871,10 +871,10 @@ public abstract class BasePage {
     }
 
     @Step("Click to `WhistList` link at header bar")
-    public UserProductWhistListPageObject clickToWhistListLink() {
-        waitForElementClickable(NopCommerceBasePageUI.WHIST_LIST_LINK);
-        clickToElementByJS(NopCommerceBasePageUI.WHIST_LIST_LINK);
-        return PageGeneratorManager.getUserProductWhistListPage(driver);
+    public UserProductWishListPageObject clickToWishListLink() {
+        waitForElementClickable(NopCommerceBasePageUI.WISH_LIST_LINK);
+        clickToElementByJS(NopCommerceBasePageUI.WISH_LIST_LINK);
+        return PageGeneratorManager.getUserProductWishListPage(driver);
     }
 
     @Step("Click to `Shopping Cart` link")

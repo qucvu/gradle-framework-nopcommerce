@@ -56,9 +56,9 @@ public class UserProductDetailsPageObject extends BasePage {
     }
 
     @Step("Click to `Add to WhistList button`")
-    public void clickToAddToWhistListButtonAtProductOverview() {
-        waitForElementClickable(UserProductDetailsPageUI.ADD_TO_WHIST_LIST_BUTTON_AT_PRODUCT_OVERVIEW);
-        clickToElement(UserProductDetailsPageUI.ADD_TO_WHIST_LIST_BUTTON_AT_PRODUCT_OVERVIEW);
+    public void clickToAddToWishListButtonAtProductOverview() {
+        waitForElementClickable(UserProductDetailsPageUI.ADD_TO_WISH_LIST_BUTTON_AT_PRODUCT_OVERVIEW);
+        clickToElement(UserProductDetailsPageUI.ADD_TO_WISH_LIST_BUTTON_AT_PRODUCT_OVERVIEW);
     }
 
     @Step("Check to all `{productOrderSoftwareList}` software checkbox")

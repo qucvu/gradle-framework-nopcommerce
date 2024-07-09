@@ -51,8 +51,8 @@ public class PageGeneratorManager {
     }
 
     @Step("Initialize the User Product Whist List Page")
-    public static UserProductWhistListPageObject getUserProductWhistListPage(WebDriver driver) {
-        return new UserProductWhistListPageObject(driver);
+    public static UserProductWishListPageObject getUserProductWishListPage(WebDriver driver) {
+        return new UserProductWishListPageObject(driver);
     }
 
 

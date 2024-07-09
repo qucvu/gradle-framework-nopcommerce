@@ -12,12 +12,9 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.user.*;
 
-@Feature("User Page - Product WhistList, Compare/View Product")
-public class User_06_WhistList_Compare extends BaseTest {
+@Feature("User Page - Product WishList, Compare/View Product")
+public class User_06_WishList_Compare extends BaseTest {
 
-
-    public User_06_WhistList_Compare() {
-    }
 
     @Parameters({"browserName", "browserVersion"})
     @BeforeClass
@@ -39,54 +36,54 @@ public class User_06_WhistList_Compare extends BaseTest {
         productDetailsPage = homePage.clickToDynamicProductByTitle(productTitle);
     }
 
-    @Description("Verify user can add to whistList successfully ")
+    @Description("Verify user can add to WishList successfully ")
     @Test
-    public void WhistList_Compare_01_Add_To_WhistList() {
-        productDetailsPage.clickToAddToWhistListButtonAtProductOverview();
+    public void WishList_Compare_01_Add_To_WhishList() {
+        productDetailsPage.clickToAddToWishListButtonAtProductOverview();
         verifyEquals(productDetailsPage.getMessageAtBarNotification(), "The product has been added to your wishlist");
         productDetailsPage.closeHeaderBarNotification();
-        productWhistListPage = productDetailsPage.clickToWhistListLink();
-        verifyTrue(productWhistListPage.isProductTitleProductDisplayedAtWhistListTable(productTitle));
-        productWhistListPage.clickToWhistListShareLink();
-        verifyTrue(productWhistListPage.isFullNameDisplayedAtWhistListTitle(fullName));
-        verifyTrue(productWhistListPage.isProductTitleProductDisplayedAtWhistListTable(productTitle));
+        productWishListPage = productDetailsPage.clickToWishListLink();
+        verifyTrue(productWishListPage.isProductTitleProductDisplayedAtWishListTable(productTitle));
+        productWishListPage.clickToWishListShareLink();
+        verifyTrue(productWishListPage.isFullNameDisplayedAtWishListTitle(fullName));
+        verifyTrue(productWishListPage.isProductTitleProductDisplayedAtWishListTable(productTitle));
     }
 
-    @Description("Verify user can add to card from the whistList page successfully ")
+    @Description("Verify user can add to card from the WishList page successfully ")
     @Test
-    public void WhistList_Compare_02_Add_To_Card() {
-        shoppingCartPage = productWhistListPage.clickToShoppingCartLink();
-        productWhistListPage = shoppingCartPage.clickToWhistListLink();
-        productWhistListPage.checkToAddToCartCheckboxByProductTitle(productTitle);
-        productWhistListPage.clickToButtonByText("Add to cart");
+    public void WishList_Compare_02_Add_To_Card() {
+        shoppingCartPage = productWishListPage.clickToShoppingCartLink();
+        productWishListPage = shoppingCartPage.clickToWishListLink();
+        productWishListPage.checkToAddToCartCheckboxByProductTitle(productTitle);
+        productWishListPage.clickToButtonByText("Add to cart");
         shoppingCartPage = PageGeneratorManager.getUserShoppingCartPage(driver);
         shoppingCartPage.hoverToHeaderShoppingCartLink();
         verifyTrue(shoppingCartPage.isProductTitleDisplayedAtMiniCart(productTitle));
-        productWhistListPage = shoppingCartPage.clickToWhistListLink();
-        verifyTrue(productWhistListPage.isProductTitleProductUndisplayed(productTitle));
+        productWishListPage = shoppingCartPage.clickToWishListLink();
+        verifyTrue(productWishListPage.isProductTitleProductUndisplayed(productTitle));
 
     }
 
-    @Description("Verify user can remove product in the whist list page ")
+    @Description("Verify user can remove product in the WishList page ")
     @Test
-    public void WhistList_Compare_03_Remove_WhistList_Product() {
-        homePage = productWhistListPage.goToUserHomePage();
+    public void WishList_Compare_03_Remove_WishList_Product() {
+        homePage = productWishListPage.goToUserHomePage();
         productDetailsPage = homePage.clickToDynamicProductByTitle(productTitle);
-        productDetailsPage.clickToAddToWhistListButtonAtProductOverview();
+        productDetailsPage.clickToAddToWishListButtonAtProductOverview();
         verifyEquals(productDetailsPage.getMessageAtBarNotification(), "The product has been added to your wishlist");
         productDetailsPage.closeHeaderBarNotification();
-        productWhistListPage = productDetailsPage.clickToWhistListLink();
-        productWhistListPage.removeAllProductWhistList();
-        verifyTrue(productWhistListPage.isEmptyWhistListTable());
-        verifyTrue(productWhistListPage.isProductTitleProductUndisplayed(productTitle));
+        productWishListPage = productDetailsPage.clickToWishListLink();
+        productWishListPage.removeAllProductWishList();
+        verifyTrue(productWishListPage.isEmptyWishListTable());
+        verifyTrue(productWishListPage.isProductTitleProductUndisplayed(productTitle));
 
     }
 
 
     @Description("Verify user can add product to compare ")
     @Test
-    public void WhistList_Compare_04_Add_Product_To_Compare() {
-        homePage = productWhistListPage.goToUserHomePage();
+    public void WishList_Compare_04_Add_Product_To_Compare() {
+        homePage = productWishListPage.goToUserHomePage();
         homePage.clickToAddToCompareButtonByProductTitle(productCompare1);
         verifyEquals(homePage.getMessageAtBarNotification(), "The product has been added to your product comparison");
         homePage.closeHeaderBarNotification();
@@ -111,7 +108,7 @@ public class User_06_WhistList_Compare extends BaseTest {
 
     @Description("Verify user can new recently products ")
     @Test
-    public void WhistList_Compare_05_View_Recent_Product() {
+    public void WishList_Compare_05_View_Recent_Product() {
         productComparisonPage.hoverToDynamicHeaderLinkByText("Computers");
         productComparisonPage.clickDynamicHeaderMenuLinkByText("Notebooks");
         productCategoryPage = PageGeneratorManager.getUserProductCategoryPage(driver);
@@ -162,7 +159,7 @@ public class User_06_WhistList_Compare extends BaseTest {
     private String productViewFirst, productViewSecond, productViewThird, productViewFourth, productViewFifth;
     private UserHomePageObject homePage;
     private UserProductDetailsPageObject productDetailsPage;
-    private UserProductWhistListPageObject productWhistListPage;
+    private UserProductWishListPageObject productWishListPage;
     private UserShoppingCartPageObject shoppingCartPage;
     private UserProductComparisonPageObject productComparisonPage;
     private UserProductCategoryPageObject productCategoryPage;

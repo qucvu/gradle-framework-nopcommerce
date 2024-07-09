@@ -10,7 +10,7 @@ public class NopCommerceBasePageUI {
     public final static String REGISTER_LINK = "css=a.ico-register";
     public final static String LOGOUT_LINK = "css=a.ico-logout";
     public final static String LOGIN_LINK = "css=a.ico-login";
-    public final static String WHIST_LIST_LINK = "css=a.ico-wishlist";
+    public final static String WISH_LIST_LINK = "css=a.ico-wishlist";
     public final static String MY_ACCOUNT_LINK = "CSS=a.ico-account";
     public final static String SHOPPING_CART_LINK = "CSS=a.ico-cart";
     public final static String DYNAMIC_ELEMENT_BY_ID = "id=%s";

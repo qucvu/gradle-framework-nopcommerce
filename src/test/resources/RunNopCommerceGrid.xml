@@ -14,7 +14,7 @@
         <parameter name="browserVersion" value="122"/>
         <classes>
             <class name="com.nopcommerce.user.User_02_Login"/>
-            <!--            <class name="com.nopcommerce.user.User_06_WhistList_Compare"/>-->
+            <!--            <class name="com.nopcommerce.user.User_06_WishList_Compare"/>-->
         </classes>
     </test>
 

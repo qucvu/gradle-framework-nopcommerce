@@ -24,6 +24,7 @@ public class Common_02_Login_Admin extends BaseTest {
         verifyTrue(adminDashboardPage.isContentHeaderDisplayedByHeaderAdminPage("Dashboard"));
         loggedCookies = adminDashboardPage.getAllCookies();
         driver.quit();
+
     }
 
     private WebDriver driver;
